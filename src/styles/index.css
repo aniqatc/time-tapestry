@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+@config '../../tailwind.config.ts';
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: theme('colors.primary.900');
+  background-color: theme('colors.primary.25');
+
+  font-family: theme('fontFamily.sans');
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

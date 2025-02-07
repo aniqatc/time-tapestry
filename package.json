@@ -1,0 +1,70 @@
+{
+  "name": "react-ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "",
+  "keywords": [],
+  "author": {
+    "name": "Aniqa",
+    "email": "hello@aniqa.dev",
+    "url": "https://aniqa.dev"
+  },
+  "homepage": "",
+  "repository": "",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "prepare": "husky",
+    "serve": "ngrok http 3000",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.7",
+    "@tailwindcss/vite": "^4.0.4",
+    "motion": "^12.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^20.11.16",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "husky": "^9.0.7",
+    "lint-staged": "^15.2.0",
+    "ngrok": "^5.0.0-beta.2",
+    "postcss": "^8.5.1",
+    "prettier": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.0.4",
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^8.21.0",
+    "vite": "^5.0.8",
+    "vite-plugin-pwa": "^0.17.4"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{html,css,md,json}": [
+      "prettier --write"
+    ]
+  }
+}
