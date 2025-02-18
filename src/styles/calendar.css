@@ -15,6 +15,8 @@
 
 .mantine-DatePicker-day {
   color: #374151;
+  border-radius: 50%;
+  margin: 1px;
 }
 
 .mantine-UnstyledButton-root:hover:where(
