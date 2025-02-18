@@ -1,18 +1,36 @@
+import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Select } from '@mantine/core';
-import { Cake } from '@phosphor-icons/react';
+import { Cake, CalendarDots } from '@phosphor-icons/react';
 import { RELATIONS } from '@constants/relations';
 import { selectStyles } from '@styles/mantineSelect';
 import { InputWrapper, PrimaryButton } from '@components/reusable';
 
 export default function BirthdayForm(): JSX.Element {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
+
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [relation, setRelation] = useState<string>(RELATIONS[0]);
 
   return (
-    <form className="flex w-full flex-col gap-2">
+    <form
+      className="flex w-full flex-col gap-2"
+      autoComplete="off"
+      onSubmit={event => {
+        event.preventDefault();
+      }}
+    >
+      <InputWrapper id="date" icon={<CalendarDots size={24} weight="duotone" />} label="Selected">
+        <input
+          id="date"
+          type="text"
+          value={dayjs(dayjs().toDate()).format('MMMM D, YYYY')}
+          readOnly
+          className="w-full p-1 text-end outline-0"
+        />
+      </InputWrapper>
+
       <InputWrapper id="name" label="Display Name" isFocused={focusedInput === 'name'}>
         <input
           required
