@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import { DatePicker } from '@mantine/dates';
+import { DatePicker, DatesProvider } from '@mantine/dates';
 import { Indicator } from '@mantine/core';
 import { MantineProvider, createTheme } from '@mantine/core';
 import { useState } from 'react';
@@ -40,15 +40,17 @@ export default function Calendar(): JSX.Element {
 
   return (
     <MantineProvider theme={theme}>
-      <div className="border-gray-light rounded-sm border p-2">
-        <DatePicker
-          value={date}
-          onChange={setDate}
-          minDate={dayjs().subtract(100, 'year').toDate()}
-          maxDate={dayjs().toDate()}
-          renderDay={eventRenderer}
-        />
-      </div>
+      <DatesProvider settings={{ consistentWeeks: true }}>
+        <div className="border-gray-light rounded-sm border p-2">
+          <DatePicker
+            value={date}
+            onChange={setDate}
+            minDate={dayjs().subtract(100, 'year').toDate()}
+            maxDate={dayjs().toDate()}
+            renderDay={eventRenderer}
+          />
+        </div>
+      </DatesProvider>
     </MantineProvider>
   );
 }
