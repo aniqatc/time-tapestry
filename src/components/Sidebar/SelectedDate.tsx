@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
 import { CalendarDots } from '@phosphor-icons/react';
-import { InputWrapper } from '../reusable';
+import { InputWrapper } from '@components/reusable';
 
 export default function SelectedDate(): JSX.Element {
   return (

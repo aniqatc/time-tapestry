@@ -1,30 +1,21 @@
 import { useState } from 'react';
-import { InputWrapper } from '../reusable';
 import { Select } from '@mantine/core';
-
-const relations: string[] = [
-  'Self',
-  'Spouse',
-  'Partner',
-  'Parent',
-  'Sibling',
-  'Child',
-  'Friend',
-  'Grandparent',
-  'Grandchild',
-  'Relative',
-];
+import { Cake } from '@phosphor-icons/react';
+import { RELATIONS } from '@constants/relations';
+import { selectStyles } from '@styles/mantineSelect';
+import { InputWrapper, PrimaryButton } from '@components/reusable';
 
 export default function BirthdayForm(): JSX.Element {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [relation, setRelation] = useState<string>(relations[0]);
+  const [relation, setRelation] = useState<string>(RELATIONS[0]);
 
   return (
     <form className="flex w-full flex-col gap-2">
       <InputWrapper id="name" label="Display Name" isFocused={focusedInput === 'name'}>
         <input
+          required
           type="text"
           id="name"
           placeholder="Enter Display Name..."
@@ -39,6 +30,7 @@ export default function BirthdayForm(): JSX.Element {
 
       <InputWrapper id="email" label="Email" isFocused={focusedInput === 'email'}>
         <input
+          required
           type="email"
           id="email"
           placeholder="Enter Valid Email..."
@@ -55,47 +47,24 @@ export default function BirthdayForm(): JSX.Element {
         <Select
           id="relation"
           placeholder="Pick value"
-          data={relations}
+          data={RELATIONS}
           allowDeselect={false}
           maxDropdownHeight={165}
           searchable
           nothingFoundMessage="Nothing found..."
           comboboxProps={{ transitionProps: { transition: 'pop-top-right', duration: 200 } }}
-          styles={{
-            wrapper: {
-              marginRight: '-0.5rem',
-            },
-            input: {
-              color: '#0D3B76',
-              width: '100%',
-              height: '2.25rem',
-              textAlign: 'end',
-              fontSize: '0.875rem',
-              borderColor: 'transparent',
-              backgroundColor: 'transparent',
-              ':focus': {
-                borderColor: 'transparent',
-                outline: 'none',
-              },
-            },
-            root: {
-              width: '135px',
-              marginLeft: 'auto',
-            },
-            dropdown: {
-              marginTop: '-0.25rem',
-            },
-            option: {
-              justifyContent: 'flex-end',
-              color: '#4D5A6D',
-            },
-          }}
+          styles={selectStyles}
           value={relation}
           onChange={setRelation as any}
           onFocus={() => setFocusedInput('relation')}
           onBlur={() => setFocusedInput(null)}
         />
       </InputWrapper>
+
+      <PrimaryButton type="submit" icon={<Cake size={24} weight="duotone" />}>
+        <span className="font-bold">Add Birthday</span>
+        <span className="text-primary-500 text-xs font-medium">(0/5)</span>
+      </PrimaryButton>
     </form>
   );
 }
