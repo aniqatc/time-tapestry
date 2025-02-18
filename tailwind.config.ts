@@ -7,6 +7,9 @@ export default {
       fontFamily: {
         sans: ['DM Sans', 'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
       },
+      text: {
+        xxs: '0.7rem',
+      },
       colors: {
         primary: {
           25: '#FCFDFF',

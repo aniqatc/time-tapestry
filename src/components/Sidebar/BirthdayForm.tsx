@@ -37,7 +37,7 @@ export default function BirthdayForm(): JSX.Element {
           type="text"
           id="name"
           placeholder="Enter Display Name..."
-          className="w-full p-1 text-end outline-0 placeholder:text-xs placeholder:italic"
+          className="placeholder:text-xxs w-full p-1 text-end outline-0 placeholder:italic"
           value={name}
           onChange={event => setName(event?.target.value)}
           onFocus={() => setFocusedInput('name')}
@@ -52,7 +52,7 @@ export default function BirthdayForm(): JSX.Element {
           type="email"
           id="email"
           placeholder="Enter Valid Email..."
-          className="w-full p-1 text-end outline-0 placeholder:text-xs placeholder:italic"
+          className="placeholder:text-xxs w-full p-1 text-end outline-0 placeholder:italic"
           value={email}
           onChange={event => setEmail(event?.target.value)}
           onFocus={() => setFocusedInput('email')}

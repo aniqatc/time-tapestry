@@ -18,7 +18,7 @@ export default function InputWrapper({ ...props }: InputProps): JSX.Element {
     >
       <label htmlFor={id} className="flex items-center justify-between gap-1">
         {icon && <span>{icon}</span>}
-        <span className="text-[0.75rem] font-medium text-nowrap">{label}</span>
+        <span className="text-xxs font-medium text-nowrap">{label}</span>
       </label>
 
       <div className="text-primary-800 w-full text-end font-medium">{children}</div>
