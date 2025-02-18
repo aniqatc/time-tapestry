@@ -1,9 +1,10 @@
-import { Header } from './components';
+import { Header, Sidebar } from './components';
 
 function App(): JSX.Element {
   return (
-    <main className="min-h-screen">
+    <main className="h-svh">
       <Header />
+      <Sidebar />
     </main>
   );
 }

@@ -1,0 +1,30 @@
+.mantine-DatePicker-calendarHeader {
+  color: #2c3f59; /* text-primary-900 */
+}
+
+.mantine-DatePicker-calendarHeaderLevel {
+  font-weight: 600;
+}
+
+.mantine-DatePicker-weekday {
+  color: #9a9fa4;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.mantine-DatePicker-day {
+  color: #374151;
+}
+
+.mantine-UnstyledButton-root:hover:where(
+    :not([data-static], [data-disabled], [data-selected], [data-in-range])
+  ) {
+  background-color: #e1ebf9 !important; /* bg-primary-50 */
+}
+
+/* Selected date */
+.mantine-DatePicker-day[data-selected] {
+  background-color: #2f4f79; /* bg-primary-700 */
+  color: white;
+}
