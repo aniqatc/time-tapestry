@@ -1,5 +1,9 @@
+import { useState, useEffect } from 'react';
+import { Cake } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
 import Calendar from './Calendar';
 import BirthdayForm from './BirthdayForm';
+import { useScreenWidth } from '@hooks';
 
 import { MantineProvider, createTheme } from '@mantine/core';
 
@@ -12,14 +16,46 @@ const theme = createTheme({
 });
 
 export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
+  const [isExpanded, setIsExpanded] = useState<boolean>(true);
+  const width = useScreenWidth();
+
+  useEffect(() => {
+    setIsExpanded(width >= 625);
+  }, [width]);
+
   return (
     <MantineProvider theme={theme}>
-      <aside
-        className={`shadow-primary border-primary-200 sticky left-0 mr-auto flex h-[90%] flex-col items-center gap-2 rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 xl:absolute ${className}`}
+      <motion.aside
+        initial={false}
+        animate={{
+          width: isExpanded ? 315 : 50,
+          transition: {
+            duration: 0.3,
+            ease: 'easeInOut',
+          },
+        }}
+        className={`group shadow-primary border-primary-200 sticky left-0 mr-auto flex h-[90%] flex-col items-center gap-2 rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 max-[625px]:cursor-pointer max-[535px]:absolute xl:absolute ${className}`}
+        onMouseEnter={() => width < 625 && setIsExpanded(true)}
+        onMouseLeave={() => width < 625 && setIsExpanded(false)}
+        onClick={() => width < 625 && setIsExpanded(true)}
       >
-        <Calendar />
-        <BirthdayForm />
-      </aside>
+        {isExpanded && (
+          <motion.span
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+          >
+            <Calendar />
+            <BirthdayForm />
+          </motion.span>
+        )}
+        {!isExpanded && (
+          <button className="text-primary-500 group-hover:text-primary-700 flex items-center justify-center">
+            <Cake size={24} weight="duotone" />
+          </button>
+        )}
+      </motion.aside>
     </MantineProvider>
   );
 }

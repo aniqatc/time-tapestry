@@ -5,7 +5,7 @@ export default function Content(): JSX.Element {
   const formattedDate = useDateStore((state: { formattedDate: string }) => state.formattedDate);
 
   return (
-    <div className="mx-auto -mt-9 flex h-min w-full flex-col gap-4 pr-4 pl-2 xl:max-w-[655px]">
+    <div className="mx-auto -mt-9 flex h-min w-full flex-col gap-4 pr-4 pl-2 max-[650px]:-mt-2 max-[535px]:pl-16 xl:max-w-[655px]">
       <section className="flex flex-wrap gap-3 lg:flex-nowrap">
         <PrimaryCard heading={`Birthdays on ${formattedDate}`}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt

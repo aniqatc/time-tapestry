@@ -16,7 +16,7 @@ export default function BirthdayForm(): JSX.Element {
 
   return (
     <form
-      className="flex w-full flex-col gap-2"
+      className="mt-2 flex w-full flex-col gap-2"
       autoComplete="off"
       onSubmit={event => {
         event.preventDefault();

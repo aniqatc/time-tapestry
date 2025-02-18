@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export default function Header({ className = '' }: HeaderProps): JSX.Element {
   return (
-    <header className={`flex px-3 py-4 justify-between${className}`}>
+    <header className={`flex items-center justify-between px-3 py-4 ${className}`}>
       <Heading>timetapestry</Heading>
       <ThemeToggle />
     </header>
