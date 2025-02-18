@@ -51,6 +51,16 @@ export default {
       boxShadow: {
         primary: '1px 1px 8px 0 rgba(0, 0, 0, 0.1)',
       },
+      keyframes: {
+        shake: {
+          '0%, 100%': { transform: 'rotate(0deg)' },
+          '25%': { transform: 'rotate(-20deg)' },
+          '75%': { transform: 'rotate(20deg)' },
+        },
+      },
+      animation: {
+        shake: 'shake 0.5s ease-in-out',
+      },
     },
   },
   plugins: [],

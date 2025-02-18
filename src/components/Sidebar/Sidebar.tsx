@@ -15,7 +15,7 @@ export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
   return (
     <MantineProvider theme={theme}>
       <aside
-        className={`shadow-primary border-primary-200 flex h-[90%] w-min flex-col items-center gap-2 rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 ${className}`}
+        className={`shadow-primary border-primary-200 sticky left-0 mr-auto flex h-[90%] flex-col items-center gap-2 rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 xl:absolute ${className}`}
       >
         <Calendar />
         <BirthdayForm />
