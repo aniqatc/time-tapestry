@@ -2,16 +2,11 @@ import dayjs from 'dayjs';
 
 import { DatePicker, DatesProvider } from '@mantine/dates';
 import { Indicator } from '@mantine/core';
-import { MantineProvider, createTheme } from '@mantine/core';
 import { useState } from 'react';
 
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@styles/calendar.css';
-
-const theme = createTheme({
-  fontFamily: 'inherit',
-});
 
 const siteEvents: number[] = [27, 10, 11, 4, 19]; // hard-coded for now
 const userEvents: number[] = [new Date().getDate(), 9]; // hard-coded for now
@@ -39,18 +34,16 @@ export default function Calendar(): JSX.Element {
   const [date, setDate] = useState<Date | null>(dayjs().toDate());
 
   return (
-    <MantineProvider theme={theme}>
-      <DatesProvider settings={{ consistentWeeks: true }}>
-        <div className="border-gray-light rounded-sm border p-2">
-          <DatePicker
-            value={date}
-            onChange={setDate}
-            minDate={dayjs().subtract(100, 'year').toDate()}
-            maxDate={dayjs().toDate()}
-            renderDay={eventRenderer}
-          />
-        </div>
-      </DatesProvider>
-    </MantineProvider>
+    <DatesProvider settings={{ consistentWeeks: true }}>
+      <div className="border-gray-light rounded-sm border p-2">
+        <DatePicker
+          value={date}
+          onChange={setDate}
+          minDate={dayjs().subtract(100, 'year').toDate()}
+          maxDate={dayjs().toDate()}
+          renderDay={eventRenderer}
+        />
+      </div>
+    </DatesProvider>
   );
 }
