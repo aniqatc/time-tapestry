@@ -13,13 +13,13 @@ export default function PrimaryCard({
   children,
 }: PrimaryCardProps): JSX.Element {
   return (
-    <>
-      <SubHeading>{heading}</SubHeading>
+    <span>
+      {heading && <SubHeading>{heading}</SubHeading>}
       <div
-        className={`shadow-primary bg-primary-75 border-primary-100 text-primary-500 rounded-sm border px-2 py-2 text-sm ${className}`}
+        className={`shadow-primary bg-primary-75 border-primary-100 text-primary-500 rounded-sm border px-3 py-2 text-sm ${!heading && 'lg:mt-9'} ${className}`}
       >
         {children}
       </div>
-    </>
+    </span>
   );
 }
