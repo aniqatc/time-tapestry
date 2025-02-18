@@ -1,13 +1,14 @@
-import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Select } from '@mantine/core';
 import { Cake, CalendarDots } from '@phosphor-icons/react';
 import { RELATIONS } from '@constants/relations';
 import { selectStyles } from '@styles/mantineSelect';
 import { InputWrapper, PrimaryButton } from '@components/reusable';
+import { useDateStore } from '@contexts';
 
 export default function BirthdayForm(): JSX.Element {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
+  const formattedDate = useDateStore((state: { formattedDate: string }) => state.formattedDate);
 
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -25,7 +26,7 @@ export default function BirthdayForm(): JSX.Element {
         <input
           id="date"
           type="text"
-          value={dayjs(dayjs().toDate()).format('MMMM D, YYYY')}
+          value={formattedDate}
           readOnly
           className="w-full p-1 text-end outline-0"
         />
