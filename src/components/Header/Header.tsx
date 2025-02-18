@@ -6,7 +6,7 @@ interface HeaderProps {
 
 export default function Header({ className = '' }: HeaderProps): JSX.Element {
   return (
-    <header className={`p-3 ${className}`}>
+    <header className={`px-3 py-4 ${className}`}>
       <Heading>timetapestry</Heading>
     </header>
   );
