@@ -40,7 +40,7 @@ export default function Calendar(): JSX.Element {
 
   return (
     <MantineProvider theme={theme}>
-      <div className="border-gray-light rounded-sm border p-1">
+      <div className="border-gray-light rounded-sm border p-2">
         <DatePicker
           value={date}
           onChange={setDate}
