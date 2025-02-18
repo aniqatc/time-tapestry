@@ -24,9 +24,6 @@ export default {
           800: '#0D3B76',
           900: '#2C3F59',
         },
-        blue: {
-          550: '#228be6',
-        },
         gray: {
           light: '#E9E9E9',
           medium: '#90969D',

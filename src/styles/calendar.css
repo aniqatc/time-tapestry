@@ -19,6 +19,10 @@
   margin: 1px;
 }
 
+.mantine-UnstyledButton-root:focus-visible {
+  outline-color: #99acc5; /* outline-primary-300 */
+}
+
 .mantine-UnstyledButton-root:hover:where(
     :not([data-static], [data-disabled], [data-selected], [data-in-range])
   ) {
