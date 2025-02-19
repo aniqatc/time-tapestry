@@ -7,9 +7,9 @@ import { InputWrapper, PrimaryButton } from '@components/reusable';
 import { useDateStore } from '@contexts';
 
 export default function BirthdayForm(): JSX.Element {
-  const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const formattedDate = useDateStore((state: { formattedDate: string }) => state.formattedDate);
 
+  const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [relation, setRelation] = useState<string>(RELATIONS[0]);
