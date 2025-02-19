@@ -57,9 +57,15 @@ export default {
           '25%': { transform: 'rotate(-20deg)' },
           '75%': { transform: 'rotate(20deg)' },
         },
+        'subtle-shake': {
+          '0%, 40%, 60%, 100%': { transform: 'rotate(0deg) scale(1)' },
+          '45%': { transform: 'rotate(-15deg) scale(1.02)' },
+          '55%': { transform: 'rotate(15deg) scale(1.02)' },
+        },
       },
       animation: {
         shake: 'shake 0.5s ease-in-out',
+        'subtle-shake': 'subtle-shake 2s ease-in infinite',
       },
     },
   },

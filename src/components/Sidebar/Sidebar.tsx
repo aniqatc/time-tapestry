@@ -16,7 +16,7 @@ const theme = createTheme({
 });
 
 export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
-  const [isExpanded, setIsExpanded] = useState<boolean>(true);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const width = useScreenWidth();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
             ease: 'easeInOut',
           },
         }}
-        className={`group shadow-primary border-primary-200 sticky left-0 mr-auto flex h-[90%] flex-col items-center gap-2 rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 max-[625px]:cursor-pointer max-[535px]:absolute xl:absolute ${className}`}
+        className={`shadow-primary border-primary-200 sticky left-0 mr-auto flex h-[90%] flex-col items-center gap-2 rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 max-[625px]:cursor-pointer max-[535px]:absolute xl:absolute ${className}`}
         onMouseEnter={() => width < 625 && setIsExpanded(true)}
         onMouseLeave={() => width < 625 && setIsExpanded(false)}
         onClick={() => width < 625 && setIsExpanded(true)}
@@ -51,7 +51,7 @@ export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
           </motion.span>
         )}
         {!isExpanded && (
-          <button className="text-primary-500 group-hover:text-primary-700 flex items-center justify-center">
+          <button className="text-primary-600 animate-subtle-shake flex items-center justify-center">
             <Cake size={24} weight="duotone" />
           </button>
         )}
