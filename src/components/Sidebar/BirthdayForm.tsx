@@ -12,6 +12,7 @@ export default function BirthdayForm(): JSX.Element {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
+  const [link, setLink] = useState<string>('');
   const [relation, setRelation] = useState<string>(RELATIONS[0]);
 
   return (
@@ -57,6 +58,20 @@ export default function BirthdayForm(): JSX.Element {
           value={email}
           onChange={event => setEmail(event?.target.value)}
           onFocus={() => setFocusedInput('email')}
+          onBlur={() => setFocusedInput(null)}
+          autoComplete="off"
+        />
+      </InputWrapper>
+
+      <InputWrapper id="link" label="Social Media" isFocused={focusedInput === 'link'}>
+        <input
+          type="text"
+          id="link"
+          placeholder="Enter Profile Link..."
+          className="placeholder:text-xxs w-full p-1 text-end outline-0 placeholder:italic"
+          value={link}
+          onChange={event => setLink(event?.target.value)}
+          onFocus={() => setFocusedInput('link')}
           onBlur={() => setFocusedInput(null)}
           autoComplete="off"
         />

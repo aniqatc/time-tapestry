@@ -36,7 +36,7 @@ export default function Calendar(): JSX.Element {
 
   return (
     <DatesProvider settings={{ consistentWeeks: true }}>
-      <div className="border-gray-light rounded-sm border p-2">
+      <div className="border-gray-light rounded-sm border p-1">
         <DatePicker
           value={selectedDate}
           onChange={setSelectedDate}
