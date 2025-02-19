@@ -34,7 +34,7 @@ export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
             ease: 'easeInOut',
           },
         }}
-        className={`shadow-primary border-primary-200 sticky left-0 mr-auto flex h-full flex-col items-center gap-2 rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 max-[625px]:cursor-pointer max-[535px]:absolute lg:absolute ${className}`}
+        className={`shadow-primary border-primary-200 max-xs:absolute sticky left-0 z-100 mr-auto flex h-full flex-col items-center gap-2 rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 max-[625px]:cursor-pointer lg:absolute ${className}`}
         onMouseEnter={() => width < 625 && setIsExpanded(true)}
         onMouseLeave={() => width < 625 && setIsExpanded(false)}
         onClick={() => width < 625 && setIsExpanded(true)}

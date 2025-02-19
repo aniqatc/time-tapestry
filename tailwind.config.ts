@@ -18,6 +18,9 @@ export default {
           'monospace',
         ],
       },
+      screens: {
+        xs: '550px',
+      },
       text: {
         xxs: '0.7rem',
       },

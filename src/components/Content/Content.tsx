@@ -11,7 +11,7 @@ export default function Content(): JSX.Element {
   const [active, setActive] = React.useState<number>(0);
 
   return (
-    <div className="-mt-9 flex w-full flex-col gap-4 overflow-y-auto pr-4 pb-28 pl-2 max-[650px]:-mt-2 max-[535px]:pl-16 lg:ml-[350px] lg:max-w-[655px] xl:mx-auto">
+    <div className="max-xs:pl-16 -mt-9 flex w-full flex-col gap-4 overflow-y-auto px-2 pb-28 max-[650px]:-mt-2 lg:ml-[350px] lg:max-w-[655px] xl:mx-auto">
       <section className="flex flex-wrap gap-3 lg:flex-nowrap">
         <PrimaryCard heading={`Birthdays on ${shortFormattedDate}`}>
           <Label className="mb-2">Notable Persons</Label>
@@ -30,12 +30,15 @@ export default function Content(): JSX.Element {
             <li>
               <a
                 href="#"
-                className="group hover:bg-primary-50/45 -mx-2 -my-1 flex items-start justify-between gap-2 rounded-xs px-2 py-1 *:transition-all *:duration-200"
+                className="group hover:bg-primary-50/45 active:bg-primary-50/45 -mx-2 -my-1 flex items-start justify-between gap-2 rounded-xs px-2 py-1 *:transition-all *:duration-200"
               >
-                <Label className="group-hover:text-primary-500" number="true">
+                <Label
+                  className="group-hover:text-primary-500 group-active:text-primary-500"
+                  number="true"
+                >
                   1290
                 </Label>
-                <span className="group-hover:text-primary-700 mr-auto">
+                <span className="group-hover:text-primary-700 group-active:text-primary-700 mr-auto">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua.
                 </span>
@@ -48,12 +51,15 @@ export default function Content(): JSX.Element {
             <li>
               <a
                 href="#"
-                className="group hover:bg-primary-50/45 -mx-2 -my-1 flex items-start justify-between gap-2 rounded-xs px-2 py-1 *:transition-all *:duration-200"
+                className="group hover:bg-primary-50/45 active:bg-primary-50/45 -mx-2 -my-1 flex items-start justify-between gap-2 rounded-xs px-2 py-1 *:transition-all *:duration-200"
               >
-                <Label className="group-hover:text-primary-500" number="true">
+                <Label
+                  className="group-hover:text-primary-500 group-active:text-primary-500"
+                  number="true"
+                >
                   1290
                 </Label>
-                <span className="group-hover:text-primary-700 mr-auto">
+                <span className="group-hover:text-primary-700 group-active:text-primary-700 mr-auto">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </span>
                 <ArrowUpRight
@@ -65,12 +71,15 @@ export default function Content(): JSX.Element {
             <li>
               <a
                 href="#"
-                className="group hover:bg-primary-50/45 -mx-2 -my-1 flex items-start justify-between gap-2 rounded-xs px-2 py-1 *:transition-all *:duration-200"
+                className="group hover:bg-primary-50/45 active:bg-primary-50/45 -mx-2 -my-1 flex items-start justify-between gap-2 rounded-xs px-2 py-1 *:transition-all *:duration-200"
               >
-                <Label className="group-hover:text-primary-500" number="true">
+                <Label
+                  className="group-hover:text-primary-500 group-active:text-primary-500"
+                  number="true"
+                >
                   1290
                 </Label>
-                <span className="group-hover:text-primary-700 mr-auto">
+                <span className="group-hover:text-primary-700 group-active:text-primary-700 mr-auto">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua.
                 </span>
@@ -84,45 +93,57 @@ export default function Content(): JSX.Element {
         </PrimaryCard>
       </section>
       <section className="relative">
-        <div className="absolute top-2 flex gap-0 text-xs md:pl-3 md:text-sm lg:gap-2">
+        <div className="absolute top-2 flex gap-0 text-sm md:pl-3 lg:gap-2">
           <motion.button
             initial={{ opacity: 0 }}
             animate={{
-              scale: active === 0 ? 1 : 0.95,
+              scale: active === 3 ? 1 : 0.95,
               opacity: 1,
               transition: { duration: 0.2 },
             }}
             onClick={() => setActive(0)}
-            className={`${active === 0 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 -mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 py-1 transition-all`}
+            className={`${active === 0 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 pt-1 pb-3 transition-all`}
           >
-            <Planet size={13} weight="duotone" />
-            Planets
+            <Planet size={14} weight="duotone" />
+            <span
+              className={`${active === 0 ? 'block' : 'xs:hidden hidden min-[395px]:block min-[720px]:block'}`}
+            >
+              Planets
+            </span>
           </motion.button>
           <motion.button
             initial={{ opacity: 0 }}
             animate={{
-              scale: active === 1 ? 1 : 0.95,
+              scale: active === 3 ? 1 : 0.95,
               opacity: 1,
               transition: { duration: 0.2 },
             }}
             onClick={() => setActive(1)}
-            className={`${active === 1 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 -mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 py-1 transition-all`}
+            className={`${active === 1 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 pt-1 pb-3 transition-all`}
           >
-            <MoonStars size={13} weight="duotone" />
-            Moon
+            <MoonStars size={14} weight="duotone" />
+            <span
+              className={`${active === 1 ? 'block' : 'xs:hidden hidden min-[395px]:block min-[720px]:block'}`}
+            >
+              Moon
+            </span>
           </motion.button>
           <motion.button
             initial={{ opacity: 0 }}
             animate={{
-              scale: active === 2 ? 1 : 0.95,
+              scale: active === 3 ? 1 : 0.95,
               opacity: 1,
               transition: { duration: 0.2 },
             }}
             onClick={() => setActive(2)}
-            className={`${active === 2 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 -mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 py-1 transition-all`}
+            className={`${active === 2 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 pt-1 pb-3 transition-all`}
           >
-            <Star size={13} weight="duotone" />
-            Zodiac
+            <Star size={14} weight="duotone" />
+            <span
+              className={`${active === 2 ? 'block' : 'xs:hidden hidden min-[395px]:block min-[720px]:block'}`}
+            >
+              Zodiac
+            </span>
           </motion.button>
           <motion.button
             initial={{ opacity: 0 }}
@@ -132,13 +153,17 @@ export default function Content(): JSX.Element {
               transition: { duration: 0.2 },
             }}
             onClick={() => setActive(3)}
-            className={`${active === 3 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 -mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 py-1 transition-all`}
+            className={`${active === 3 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 pt-1 pb-3 transition-all`}
           >
-            <Flag size={13} weight="duotone" />
-            Events
+            <Flag size={14} weight="duotone" />
+            <span
+              className={`${active === 3 ? 'block' : 'xs:hidden hidden min-[395px]:block min-[720px]:block'}`}
+            >
+              Events
+            </span>
           </motion.button>
         </div>
-        <div className="relative top-8 z-10 md:top-9 lg:top-0">
+        <div className="relative top-9 z-10 lg:top-0">
           {active === 0 && (
             <motion.div
               key={active}
