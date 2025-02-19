@@ -29,7 +29,9 @@ export default function Content(): JSX.Element {
                 href="#"
                 className="group flex items-start justify-between gap-2 *:transition-all *:duration-200"
               >
-                <Label className="group-hover:text-primary-500 min-w-12">2000</Label>
+                <Label className="group-hover:text-primary-500" number="true">
+                  2000
+                </Label>
                 <span className="group-hover:text-primary-700 mr-auto">
                   Lorem sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </span>
@@ -44,7 +46,9 @@ export default function Content(): JSX.Element {
                 href="#"
                 className="group flex items-start justify-between gap-2 *:transition-all *:duration-200"
               >
-                <Label className="group-hover:text-primary-500 min-w-12">1992</Label>
+                <Label className="group-hover:text-primary-500" number="true">
+                  1992
+                </Label>
                 <span className="group-hover:text-primary-700 mr-auto">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </span>
@@ -59,7 +63,9 @@ export default function Content(): JSX.Element {
                 href="#"
                 className="group flex items-start justify-between gap-2 *:transition-all *:duration-200"
               >
-                <Label className="group-hover:text-primary-500 min-w-12">1290</Label>
+                <Label className="group-hover:text-primary-500" number="true">
+                  1290
+                </Label>
                 <span className="group-hover:text-primary-700 mr-auto">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua.
