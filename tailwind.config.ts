@@ -6,6 +6,17 @@ export default {
     extend: {
       fontFamily: {
         sans: ['DM Sans', 'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+        mono: [
+          'Geist Mono',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Monaco',
+          'Consolas',
+          'Liberation Mono',
+          'Courier New',
+          'monospace',
+        ],
       },
       text: {
         xxs: '0.7rem',
@@ -40,12 +51,6 @@ export default {
           mars: '#B50928',
           jupiter: '#7450E2',
           saturn: '#C16718',
-        },
-        event: {
-          user: '#4B23EB',
-          'shared-sm': '#F0D6E3',
-          'shared-md': '#EB93C0',
-          'shared-lg': '#EC0A7F',
         },
       },
       boxShadow: {
