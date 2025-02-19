@@ -2,7 +2,7 @@ import { Header, Sidebar, Content } from './components';
 
 function App(): JSX.Element {
   return (
-    <div className="h-svh">
+    <div className="h-screen pb-12">
       <Header />
       <main className="flex h-full gap-2">
         <Sidebar />

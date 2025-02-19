@@ -8,7 +8,7 @@ export default function Content(): JSX.Element {
   );
 
   return (
-    <div className="-mt-9 flex h-min w-full flex-col gap-4 pr-4 pl-2 max-[650px]:-mt-2 max-[535px]:pl-16 lg:ml-[350px] lg:max-w-[655px] xl:mx-auto">
+    <div className="-mt-9 flex w-full flex-col gap-4 overflow-y-auto pr-4 pb-28 pl-2 max-[650px]:-mt-2 max-[535px]:pl-16 lg:ml-[350px] lg:max-w-[655px] xl:mx-auto">
       <section className="flex flex-wrap gap-3 lg:flex-nowrap">
         <PrimaryCard heading={`Birthdays on ${shortFormattedDate}`}>
           <Label className="mb-2">Notable Persons</Label>
@@ -35,7 +35,7 @@ export default function Content(): JSX.Element {
                 </span>
                 <ArrowUpRight
                   size={20}
-                  className="text-primary-300 group-hover:text-primary-800 ml-2 shrink-0 group-hover:rotate-45"
+                  className="text-primary-30 group-active:text-primary-800 group-hover:text-primary-800 mt-1 ml-2 shrink-0 group-hover:rotate-45 group-active:rotate-45"
                 />
               </a>
             </li>
@@ -50,7 +50,7 @@ export default function Content(): JSX.Element {
                 </span>
                 <ArrowUpRight
                   size={20}
-                  className="text-primary-300 group-hover:text-primary-800 ml-2 shrink-0 group-hover:rotate-45"
+                  className="text-primary-30 group-active:text-primary-800 group-hover:text-primary-800 mt-1 ml-2 shrink-0 group-hover:rotate-45 group-active:rotate-45"
                 />
               </a>
             </li>
@@ -66,7 +66,7 @@ export default function Content(): JSX.Element {
                 </span>
                 <ArrowUpRight
                   size={20}
-                  className="text-primary-300 group-hover:text-primary-800 ml-2 shrink-0 group-hover:rotate-45"
+                  className="text-primary-30 group-active:text-primary-800 group-hover:text-primary-800 mt-1 ml-2 shrink-0 group-hover:rotate-45 group-active:rotate-45"
                 />
               </a>
             </li>
