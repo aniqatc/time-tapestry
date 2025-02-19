@@ -18,7 +18,7 @@ export default function Content(): JSX.Element {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.
         </PrimaryCard>
-        <PrimaryCard key={shortFormattedDate}>
+        <PrimaryCard>
           <Label className="mb-2">User Birthdays</Label>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.
