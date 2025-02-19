@@ -16,7 +16,6 @@ export const selectStyles = {
     },
   },
   root: {
-    width: '135px',
     marginLeft: 'auto',
   },
   dropdown: {

@@ -27,13 +27,14 @@ export default function Content(): JSX.Element {
             <li>
               <a
                 href="#"
-                className="group flex items-start justify-between gap-2 *:transition-all *:duration-200"
+                className="group hover:bg-primary-50/45 -mx-2 -my-1 flex items-start justify-between gap-2 rounded-xs px-2 py-1 *:transition-all *:duration-200"
               >
                 <Label className="group-hover:text-primary-500" number="true">
-                  2000
+                  1290
                 </Label>
                 <span className="group-hover:text-primary-700 mr-auto">
-                  Lorem sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.
                 </span>
                 <ArrowUpRight
                   size={20}
@@ -44,10 +45,10 @@ export default function Content(): JSX.Element {
             <li>
               <a
                 href="#"
-                className="group flex items-start justify-between gap-2 *:transition-all *:duration-200"
+                className="group hover:bg-primary-50/45 -mx-2 -my-1 flex items-start justify-between gap-2 rounded-xs px-2 py-1 *:transition-all *:duration-200"
               >
                 <Label className="group-hover:text-primary-500" number="true">
-                  1992
+                  1290
                 </Label>
                 <span className="group-hover:text-primary-700 mr-auto">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -61,7 +62,7 @@ export default function Content(): JSX.Element {
             <li>
               <a
                 href="#"
-                className="group flex items-start justify-between gap-2 *:transition-all *:duration-200"
+                className="group hover:bg-primary-50/45 -mx-2 -my-1 flex items-start justify-between gap-2 rounded-xs px-2 py-1 *:transition-all *:duration-200"
               >
                 <Label className="group-hover:text-primary-500" number="true">
                   1290
