@@ -11,7 +11,7 @@ export default function Content(): JSX.Element {
   const [active, setActive] = React.useState<number>(0);
 
   return (
-    <div className="max-xs:pl-16 -mt-9 flex w-full flex-col gap-4 overflow-y-auto px-2 pb-28 max-[650px]:-mt-2 lg:ml-[350px] lg:max-w-[655px] xl:mx-auto">
+    <div className="max-xs:pl-16 -mt-9 flex w-full flex-col gap-4 overflow-y-auto pr-3 pb-28 pl-2 max-[650px]:-mt-2 lg:ml-[350px] lg:max-w-[655px] xl:mx-auto">
       <section className="flex flex-wrap gap-3 lg:flex-nowrap">
         <PrimaryCard heading={`Birthdays on ${shortFormattedDate}`}>
           <Label className="mb-2">Notable Persons</Label>
@@ -95,14 +95,14 @@ export default function Content(): JSX.Element {
       <section className="relative">
         <div className="absolute top-2 flex gap-0 text-sm md:pl-3 lg:gap-2">
           <motion.button
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{
-              scale: active === 3 ? 1 : 0.95,
               opacity: 1,
-              transition: { duration: 0.2 },
+              y: 0,
+              transition: { duration: 0.3, delay: 0.2, ease: 'easeIn' },
             }}
             onClick={() => setActive(0)}
-            className={`${active === 0 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 pt-1 pb-3 transition-all`}
+            className={`${active === 0 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 py-1 transition-all`}
           >
             <Planet size={14} weight="duotone" />
             <span
@@ -112,14 +112,14 @@ export default function Content(): JSX.Element {
             </span>
           </motion.button>
           <motion.button
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{
-              scale: active === 3 ? 1 : 0.95,
               opacity: 1,
-              transition: { duration: 0.2 },
+              y: 0,
+              transition: { duration: 0.3, delay: 0.3, ease: 'easeIn' },
             }}
             onClick={() => setActive(1)}
-            className={`${active === 1 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 pt-1 pb-3 transition-all`}
+            className={`${active === 1 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 py-1 transition-all`}
           >
             <MoonStars size={14} weight="duotone" />
             <span
@@ -129,14 +129,14 @@ export default function Content(): JSX.Element {
             </span>
           </motion.button>
           <motion.button
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{
-              scale: active === 3 ? 1 : 0.95,
               opacity: 1,
-              transition: { duration: 0.2 },
+              y: 0,
+              transition: { duration: 0.3, delay: 0.4, ease: 'easeIn' },
             }}
             onClick={() => setActive(2)}
-            className={`${active === 2 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 pt-1 pb-3 transition-all`}
+            className={`${active === 2 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 py-1 transition-all`}
           >
             <Star size={14} weight="duotone" />
             <span
@@ -146,14 +146,14 @@ export default function Content(): JSX.Element {
             </span>
           </motion.button>
           <motion.button
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{
-              scale: active === 3 ? 1 : 0.95,
               opacity: 1,
-              transition: { duration: 0.2 },
+              y: 0,
+              transition: { duration: 0.3, delay: 0.5, ease: 'easeIn' },
             }}
             onClick={() => setActive(3)}
-            className={`${active === 3 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 pt-1 pb-3 transition-all`}
+            className={`${active === 3 ? 'shadow-primary bg-primary-75 border-primary-100 text-primary-900' : 'text-primary-400 border-primary-25'} hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-sm border px-2 py-1 transition-all`}
           >
             <Flag size={14} weight="duotone" />
             <span
@@ -164,46 +164,10 @@ export default function Content(): JSX.Element {
           </motion.button>
         </div>
         <div className="relative top-9 z-10 lg:top-0">
-          {active === 0 && (
-            <motion.div
-              key={active}
-              initial={{ opacity: 0.75, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <PrimaryCard>Planets</PrimaryCard>
-            </motion.div>
-          )}
-          {active === 1 && (
-            <motion.div
-              key={active}
-              initial={{ opacity: 0.75, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <PrimaryCard>Moon</PrimaryCard>
-            </motion.div>
-          )}
-          {active === 2 && (
-            <motion.div
-              key={active}
-              initial={{ opacity: 0.75, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <PrimaryCard>Zodiac</PrimaryCard>
-            </motion.div>
-          )}
-          {active === 3 && (
-            <motion.div
-              key={active}
-              initial={{ opacity: 0.75, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <PrimaryCard>Events</PrimaryCard>
-            </motion.div>
-          )}
+          {active === 0 && <PrimaryCard>Planets</PrimaryCard>}
+          {active === 1 && <PrimaryCard>Moon</PrimaryCard>}
+          {active === 2 && <PrimaryCard>Zodiac</PrimaryCard>}
+          {active === 3 && <PrimaryCard>Events</PrimaryCard>}
         </div>
       </section>
       <section className="mt-9 lg:mt-0">
