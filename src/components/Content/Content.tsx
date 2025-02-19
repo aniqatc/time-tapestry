@@ -1,14 +1,14 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { PrimaryCard, Label } from '@components/reusable';
 import { useDateStore } from '@contexts';
 import { ArrowUpRight, Planet, MoonStars, Star, Flag } from '@phosphor-icons/react';
-import React from 'react';
-import { motion } from 'framer-motion';
 
 export default function Content(): JSX.Element {
   const shortFormattedDate = useDateStore(
     (state: { shortFormattedDate: string }) => state.shortFormattedDate
   );
-  const [active, setActive] = React.useState<number>(0);
+  const [active, setActive] = useState<number>(0);
 
   return (
     <div className="max-xs:pl-16 -mt-9 flex w-full flex-col gap-4 overflow-y-auto pr-3 pb-28 pl-2 max-[650px]:-mt-2 lg:ml-[350px] lg:max-w-[655px] xl:mx-auto">
@@ -18,7 +18,7 @@ export default function Content(): JSX.Element {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.
         </PrimaryCard>
-        <PrimaryCard>
+        <PrimaryCard key={shortFormattedDate}>
           <Label className="mb-2">User Birthdays</Label>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.
