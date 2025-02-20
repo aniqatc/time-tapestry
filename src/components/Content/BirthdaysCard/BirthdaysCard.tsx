@@ -9,12 +9,12 @@ export default function BirthdaysCard(): JSX.Element {
   return (
     <>
       <PrimaryCard heading={`Birthdays on ${shortFormattedDate}`}>
-        <Label className="mb-2">Notable Persons</Label>
+        <Label className="mb-2">Verified Users</Label>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua.
       </PrimaryCard>
       <PrimaryCard>
-        <Label className="mb-2">User Birthdays</Label>
+        <Label className="mb-2">Notable Figures</Label>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua.
       </PrimaryCard>
