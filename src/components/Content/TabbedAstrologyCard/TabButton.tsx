@@ -18,7 +18,7 @@ export default function TabButton({ ...props }: TabButtonProps): JSX.Element {
       animate={{
         opacity: 1,
         y: 0,
-        transition: { duration: 0.3, delay: 0.2, ease: 'easeIn' },
+        transition: { duration: 0.3, delay: index * 0.1, ease: 'easeIn' },
       }}
       onClick={() => setActive(index)}
       className={`hover:text-primary-800 mr-0.5 flex cursor-pointer items-center gap-1 rounded-t-sm border px-2 py-1 transition-all ${

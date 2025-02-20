@@ -1,4 +1,4 @@
-import { Label } from '@components/reusable';
+import { Label } from '../../../components/reusable';
 import { ArrowUpRight } from '@phosphor-icons/react';
 import React from 'react';
 
@@ -18,7 +18,7 @@ export default function EventItem({ ...props }: EventItemProps): JSX.Element {
         rel="noreferrer noopener"
         className="group hover:bg-primary-50/45 active:bg-primary-50/45 -mx-2 -my-1 flex items-start justify-between gap-2 rounded-xs px-2 py-1 *:transition-all *:duration-200"
       >
-        <Label className="group-hover:text-primary-500 group-active:text-primary-500" number="true">
+        <Label className="group-hover:text-primary-500 group-active:text-primary-500" number={true}>
           {year}
         </Label>
         <span className="group-hover:text-primary-700 group-active:text-primary-700 mr-auto">

@@ -1,5 +1,5 @@
-import { PrimaryCard } from '@components/reusable';
-import { useDateStore } from '@contexts';
+import { PrimaryCard } from '../../../components/reusable';
+import { useDateStore } from '../../../contexts';
 import EventItem from './EventItem';
 
 export default function NotableEventsCard(): JSX.Element {

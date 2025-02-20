@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
-import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
@@ -38,17 +37,4 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
-  resolve: {
-    alias: {
-      '@components': path.resolve(__dirname, './src/components'),
-      '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@utils': path.resolve(__dirname, './src/utils'),
-      '@styles': path.resolve(__dirname, './src/styles'),
-      '@assets': path.resolve(__dirname, './src/assets'),
-      '@services': path.resolve(__dirname, './src/services'),
-      '@contexts': path.resolve(__dirname, './src/contexts'),
-      '@types': path.resolve(__dirname, './src/types'),
-      '@constants': path.resolve(__dirname, './src/constants'),
-    },
-  },
 });

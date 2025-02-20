@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeading } from '.';
-import { useDateStore } from '@contexts';
+import { useDateStore } from '../../contexts';
 
 interface PrimaryCardProps {
   children: React.ReactNode;

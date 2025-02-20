@@ -2,19 +2,70 @@ import dayjs from 'dayjs';
 
 import { DatePicker, DatesProvider } from '@mantine/dates';
 import { Indicator } from '@mantine/core';
-import { useDateStore } from '@contexts';
+import { useDateStore, DateState } from '../../contexts';
 
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
-import '@styles/calendar.css';
+import '../../styles/calendar.css';
 
-const siteEvents: number[] = [27, 10, 11, 4, 19]; // hard-coded for now
-const userEvents: number[] = [new Date().getDate(), 9]; // hard-coded for now
+export default function Calendar(): JSX.Element {
+  const selectedDate = useDateStore((state: { selectedDate: Date }) => state.selectedDate);
+  const setSelectedDate = useDateStore((state: DateState) => state.setSelectedDate);
+
+  return (
+    <DatesProvider settings={{ consistentWeeks: true }}>
+      <div className="border-gray-light rounded-sm border p-1">
+        <DatePicker
+          value={selectedDate}
+          onChange={setSelectedDate}
+          minDate={dayjs().subtract(100, 'year').toDate()}
+          maxDate={dayjs().toDate()}
+          renderDay={eventRenderer} /* Shows an indicator based on saved events */
+        />
+      </div>
+    </DatesProvider>
+  );
+}
+
+type Event = {
+  month: number;
+  day: number;
+};
+
+const siteEvents: Event[] = [
+  {
+    month: 9,
+    day: 10,
+  },
+  {
+    month: 1,
+    day: 27,
+  },
+  {
+    month: 1,
+    day: 18,
+  },
+];
+
+const userEvents: Event[] = [
+  {
+    month: new Date().getMonth(),
+    day: new Date().getDate(),
+  },
+  {
+    month: 9,
+    day: 10,
+  },
+];
 
 function eventRenderer(date: Date): React.ReactNode {
+  // Represents each calendar date
   const day: number = date.getDate();
-  const isSiteEvent: boolean = siteEvents.includes(day);
-  const isUserEvent: boolean = userEvents.includes(day);
+  const month: number = date.getMonth();
+
+  // Matches the saved events with calendar date & adds relevant color if event exists for that day
+  const isSiteEvent = siteEvents.some(event => event.month === month && event.day === day);
+  const isUserEvent = userEvents.some(event => event.month === month && event.day === day);
 
   return (
     <Indicator
@@ -27,24 +78,5 @@ function eventRenderer(date: Date): React.ReactNode {
     >
       <div>{day}</div>
     </Indicator>
-  );
-}
-
-export default function Calendar(): JSX.Element {
-  const selectedDate = useDateStore((state: { selectedDate: Date }) => state.selectedDate);
-  const setSelectedDate = useDateStore((state: any) => state.setSelectedDate);
-
-  return (
-    <DatesProvider settings={{ consistentWeeks: true }}>
-      <div className="border-gray-light rounded-sm border p-1">
-        <DatePicker
-          value={selectedDate}
-          onChange={setSelectedDate}
-          minDate={dayjs().subtract(100, 'year').toDate()}
-          maxDate={dayjs().toDate()}
-          renderDay={eventRenderer}
-        />
-      </div>
-    </DatesProvider>
   );
 }

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import dayjs from 'dayjs';
 
-interface DateState {
+export interface DateState {
   selectedDate: Date;
   formattedDate: string;
   shortFormattedDate: string;

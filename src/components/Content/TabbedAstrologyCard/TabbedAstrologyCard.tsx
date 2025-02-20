@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PrimaryCard } from '@components/reusable';
+import { PrimaryCard } from '../../../components/reusable';
 import { Planet, MoonStars, Star, Flag } from '@phosphor-icons/react';
 import TabButton from './TabButton';
 

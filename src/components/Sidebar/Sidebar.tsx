@@ -3,7 +3,7 @@ import { Cake } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import Calendar from './Calendar';
 import BirthdayForm from './BirthdayForm';
-import { useScreenWidth } from '@hooks';
+import { useScreenWidth } from '../../hooks';
 
 import { MantineProvider, createTheme } from '@mantine/core';
 

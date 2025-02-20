@@ -1,5 +1,5 @@
-import { PrimaryCard, Label } from '@components/reusable';
-import { useDateStore } from '@contexts';
+import { PrimaryCard, Label } from '../../../components/reusable';
+import { useDateStore } from '../../../contexts';
 
 export default function BirthdaysCard(): JSX.Element {
   const shortFormattedDate = useDateStore(

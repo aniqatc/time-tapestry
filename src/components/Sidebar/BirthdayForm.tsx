@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Select } from '@mantine/core';
 import { Cake, CalendarDots } from '@phosphor-icons/react';
-import { RELATIONS } from '@constants/relations';
-import { selectStyles } from '@styles/mantineSelect';
-import { InputWrapper, PrimaryButton } from '@components/reusable';
-import { useDateStore } from '@contexts';
+import { RELATIONS } from '../../constants/relations';
+import { selectStyles } from '../../styles/mantineSelect';
+import { InputWrapper, PrimaryButton } from '../../components/reusable';
+import { useDateStore } from '../../contexts';
 
 export default function BirthdayForm(): JSX.Element {
   const formattedDate = useDateStore((state: { formattedDate: string }) => state.formattedDate);
