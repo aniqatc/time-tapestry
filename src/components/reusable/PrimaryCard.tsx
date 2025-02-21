@@ -6,7 +6,7 @@ import { useDateStore } from '../../contexts';
 interface PrimaryCardProps {
   children: React.ReactNode;
   className?: string;
-  heading: string;
+  heading?: string;
 }
 
 export default function PrimaryCard({ ...props }: PrimaryCardProps): JSX.Element {
@@ -19,6 +19,7 @@ export default function PrimaryCard({ ...props }: PrimaryCardProps): JSX.Element
       initial={{ opacity: 0.4, x: 25 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3, ease: 'easeIn' }}
+      className="w-full"
     >
       {heading && <SectionHeading>{heading}</SectionHeading>}
       <div

@@ -1,12 +1,18 @@
-export const RELATIONS: string[] = [
+export const RELATIONS = [
   'Self',
-  'Spouse',
+  'Wife',
+  'Husband',
   'Partner',
-  'Parent',
-  'Sibling',
-  'Child',
+  'Mother',
+  'Father',
+  'Brother',
+  'Sister',
+  'Son',
+  'Daughter',
   'Friend',
-  'Grandparent',
-  'Grandchild',
+  'Grandfather',
+  'Grandmother',
+  'Grandson',
+  'Granddaughter',
   'Relative',
-];
+] as const;

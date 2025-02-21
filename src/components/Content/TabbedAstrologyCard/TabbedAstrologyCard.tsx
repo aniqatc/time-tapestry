@@ -22,13 +22,17 @@ export default function TabbedAstrologyCard(): JSX.Element {
             isActive={active === index}
             setActive={setActive}
             Icon={tab.Icon}
+            key={tab.label}
           >
             {tab.label}
           </TabButton>
         ))}
       </div>
       <div className="relative top-9 z-10 lg:top-0">
-        {tabs.map((tab, index) => active === index && <PrimaryCard>{tab.content}</PrimaryCard>)}
+        {tabs.map(
+          (tab, index) =>
+            active === index && <PrimaryCard key={tab.label}>{tab.content}</PrimaryCard>
+        )}
       </div>
     </>
   );
