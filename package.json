@@ -1,5 +1,5 @@
 {
-  "name": "react-ts",
+  "name": "time-tapestry",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -19,9 +19,9 @@
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "prepare": "husky",
     "serve": "ngrok http 3000",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test:report": "playwright test && playwright show-report"
   },
   "dependencies": {
     "@mantine/core": "^7.17.0",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
+    "@playwright/test": "^1.50.1",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.43",
@@ -47,6 +48,7 @@
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-playwright": "^2.2.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.18",
@@ -65,6 +67,10 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "tests/**/*.ts": [
       "eslint --fix",
       "prettier --write"
     ],
