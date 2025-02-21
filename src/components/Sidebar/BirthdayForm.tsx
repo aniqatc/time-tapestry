@@ -65,7 +65,8 @@ export default function BirthdayForm(): JSX.Element {
 
       <InputWrapper id="link" label="Social Media" isFocused={focusedInput === 'link'}>
         <input
-          type="text"
+          required
+          type="url"
           id="link"
           placeholder="Enter Profile Link..."
           className="placeholder:text-xxs w-full p-1 text-end outline-0 placeholder:italic"
