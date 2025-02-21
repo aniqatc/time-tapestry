@@ -55,6 +55,7 @@ export default function NotableFiguresCard(): JSX.Element {
           return (
             <El
               href={user.link}
+              target="_blank"
               key={crypto.randomUUID()}
               className={user.link && 'group hover:text-primary-700 transition-all hover:underline'}
             >
