@@ -32,6 +32,7 @@ type Event = {
   day: number;
 };
 
+/* Hard-coded data for now */
 const siteEvents: Event[] = [
   {
     month: 9,
@@ -64,6 +65,7 @@ function eventRenderer(date: Date): React.ReactNode {
   const month: number = date.getMonth();
 
   // Matches the saved events with calendar date & adds relevant color if event exists for that day
+  // Month and day must match (in which case, disabled would be set to false)
   const isSiteEvent = siteEvents.some(event => event.month === month && event.day === day);
   const isUserEvent = userEvents.some(event => event.month === month && event.day === day);
 
