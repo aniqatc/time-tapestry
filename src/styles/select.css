@@ -1,0 +1,41 @@
+.mantine-Select-wrapper {
+  margin-right: -0.5rem;
+}
+
+.mantine-Select-input {
+  width: 100%;
+  color: #0d3b76;
+  height: 2.25rem;
+  text-align: end;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.mantine-Select-input:focus {
+  border-color: transparent;
+  outline: none;
+}
+
+.mantine-Select-root {
+  margin-left: auto;
+}
+
+.mantine-Select-dropdown {
+  margin-top: 0.25rem;
+}
+
+.mantine-Select-option {
+  justify-content: flex-end;
+  color: #4d5a6d;
+}
+
+.mantine-Select-option:hover {
+  background-color: rgba(225, 235, 249, 0.5);
+}
+
+.mantine-Select-input::placeholder,
+#placeholder {
+  font-size: 0.7rem;
+  color: #7a94b7 !important;
+  font-style: italic;
+}
