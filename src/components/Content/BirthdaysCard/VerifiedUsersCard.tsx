@@ -2,19 +2,7 @@ import dayjs from 'dayjs';
 import { PrimaryCard, Label } from '../../../components/reusable';
 import { useDateStore } from '../../../contexts';
 import { RELATIONS } from '../../../constants/relations';
-import {
-  Icon,
-  UserSquare,
-  XLogo,
-  Butterfly,
-  LinkedinLogo,
-  FacebookLogo,
-  CodepenLogo,
-  InstagramLogo,
-  RedditLogo,
-  TwitchLogo,
-  YoutubeLogo,
-} from '@phosphor-icons/react';
+import { getSocialLogo } from '../../../utils';
 
 /* Hard coded for now */
 type UserBirthday = {
@@ -29,7 +17,7 @@ const FAKE_USERS: UserBirthday[] = [
     name: 'aniqatc',
     birthday: dayjs().subtract(20, 'year').toDate(),
     link: 'https://aniqa.dev',
-    relation: 'Self',
+    relation: 'Self (Female)',
   },
   {
     name: 'timothy',
@@ -40,13 +28,13 @@ const FAKE_USERS: UserBirthday[] = [
     name: 'johndoe',
     birthday: dayjs().subtract(58, 'year').toDate(),
     link: 'https://bsky.app',
-    relation: 'Self',
+    relation: 'Self (Male)',
   },
   {
     name: 'cooldude',
     birthday: dayjs().subtract(48, 'year').toDate(),
     link: 'https://twitter.com/cooldude',
-    relation: 'Self',
+    relation: 'Self (Male)',
   },
   {
     name: 'johndoe',
@@ -60,50 +48,6 @@ const FAKE_USERS: UserBirthday[] = [
   },
 ];
 
-function getLinkType(link: string): Icon {
-  if (link.includes('linkedin')) {
-    return LinkedinLogo;
-  }
-
-  if (link.includes('bsky') || link.includes('bluesky')) {
-    return Butterfly;
-  }
-
-  if (link.includes('youtube')) {
-    return YoutubeLogo;
-  }
-
-  if (link.includes('twitch')) {
-    return TwitchLogo;
-  }
-
-  if (link.includes('instagram')) {
-    return InstagramLogo;
-  }
-
-  if (link.includes('reddit')) {
-    return RedditLogo;
-  }
-
-  if (link.includes('codepen')) {
-    return CodepenLogo;
-  }
-
-  if (link.includes('facebook')) {
-    return FacebookLogo;
-  }
-
-  if (link.includes('linkedin')) {
-    return LinkedinLogo;
-  }
-
-  if (link.includes('x.com')) {
-    return XLogo;
-  }
-
-  return UserSquare;
-}
-
 export default function VerifiedUsersCard(): JSX.Element {
   const shortFormattedDate = useDateStore(
     (state: { shortFormattedDate: string }) => state.shortFormattedDate
@@ -116,7 +60,7 @@ export default function VerifiedUsersCard(): JSX.Element {
         {FAKE_USERS.map((user, index) => {
           if (index >= 5) return;
           const El = user.link ? 'a' : 'span';
-          const LinkIcon = user.link ? getLinkType(user.link) : 'span';
+          const LinkIcon = user.link ? getSocialLogo(user.link) : 'span';
 
           return (
             <El
@@ -128,7 +72,8 @@ export default function VerifiedUsersCard(): JSX.Element {
               <li className="mb-0.5 flex items-center justify-between gap-2 lowercase">
                 <p>
                   <span className="font-medium transition-all group-hover:font-bold">
-                    @{user.relation === 'Self' ? user.name : `${user.name}'s ${user.relation}`}
+                    @
+                    {user.relation.includes('Self') ? user.name : `${user.name}'s ${user.relation}`}
                   </span>{' '}
                   turns{' '}
                   <span className="text-primary-700 font-medium">

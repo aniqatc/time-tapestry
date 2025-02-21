@@ -1,5 +1,6 @@
 export const RELATIONS = [
-  'Self',
+  'Self (Male)',
+  'Self (Female)',
   'Wife',
   'Husband',
   'Partner',
@@ -9,10 +10,12 @@ export const RELATIONS = [
   'Sister',
   'Son',
   'Daughter',
-  'Friend',
+  'Friend (Male)',
+  'Friend (Female)',
   'Grandfather',
   'Grandmother',
   'Grandson',
   'Granddaughter',
-  'Relative',
+  'Relative (Male)',
+  'Relative (Female)',
 ] as const;
