@@ -66,11 +66,14 @@ export default function VerifiedUsersCard(): JSX.Element {
               key={crypto.randomUUID()}
               className={user.link && 'group hover:text-primary-700 transition-all hover:underline'}
             >
-              <li className="lowercase">
+              <li className="mb-0.5 lowercase">
                 <span className="font-medium transition-all group-hover:font-bold">
                   @{user.relation === 'Self' ? user.name : `${user.name}'s ${user.relation}`}
                 </span>{' '}
-                turns {dayjs().year() - dayjs(user.birthday).year()}
+                turns{' '}
+                <span className="text-primary-700 font-medium">
+                  {dayjs().year() - dayjs(user.birthday).year()}
+                </span>
               </li>
             </El>
           );
