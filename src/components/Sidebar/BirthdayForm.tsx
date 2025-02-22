@@ -4,11 +4,13 @@ import { Cake, CalendarDots } from '@phosphor-icons/react';
 import { RELATIONS } from '../../constants/relations';
 import { InputWrapper, PrimaryButton } from '../../components/reusable';
 import { useDateStore } from '../../contexts';
+import { useScreenSize } from '../../hooks';
 
 import '../../styles/select.css';
 
 export default function BirthdayForm(): JSX.Element {
   const formattedDate = useDateStore((state: { formattedDate: string }) => state.formattedDate);
+  const { width } = useScreenSize();
 
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [name, setName] = useState<string>('');
@@ -39,7 +41,7 @@ export default function BirthdayForm(): JSX.Element {
           required
           type="text"
           id="name"
-          placeholder="Enter display name..."
+          placeholder="Enter display name"
           className="placeholder:text-xxs w-full p-1 text-end outline-0 placeholder:italic"
           value={name}
           onChange={event => setName(event?.target.value)}
@@ -54,7 +56,7 @@ export default function BirthdayForm(): JSX.Element {
           required
           type="email"
           id="email"
-          placeholder="Enter valid email..."
+          placeholder="Enter valid email"
           className="placeholder:text-xxs w-full p-1 text-end outline-0 placeholder:italic"
           value={email}
           onChange={event => setEmail(event?.target.value)}
@@ -69,7 +71,7 @@ export default function BirthdayForm(): JSX.Element {
           required
           type="url"
           id="link"
-          placeholder="Enter profile link..."
+          placeholder="Enter profile link"
           className="placeholder:text-xxs w-full p-1 text-end outline-0 placeholder:italic"
           value={link}
           onChange={event => setLink(event?.target.value)}
@@ -85,7 +87,7 @@ export default function BirthdayForm(): JSX.Element {
           placeholder="Select who to celebrate"
           data={RELATIONS}
           allowDeselect={false}
-          maxDropdownHeight={165}
+          maxDropdownHeight={width <= 600 ? 100 : 165}
           searchable
           nothingFoundMessage="Nothing found..."
           comboboxProps={{ transitionProps: { transition: 'pop-top-right', duration: 200 } }}

@@ -3,7 +3,7 @@ import { Cake } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import Calendar from './Calendar';
 import BirthdayForm from './BirthdayForm';
-import { useScreenWidth } from '../../hooks';
+import { useScreenSize } from '../../hooks';
 
 import { MantineProvider, createTheme } from '@mantine/core';
 
@@ -17,7 +17,7 @@ const theme = createTheme({
 
 export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const width = useScreenWidth();
+  const { width } = useScreenSize();
 
   useEffect(() => {
     setIsExpanded(width >= 625);

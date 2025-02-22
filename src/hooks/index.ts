@@ -1,1 +1,1 @@
-export { default as useScreenWidth } from './useScreenWidth';
+export { default as useScreenSize } from './useScreenSize';

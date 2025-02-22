@@ -1,11 +1,11 @@
 .mantine-Select-wrapper {
-  margin-right: -0.5rem;
+  margin-right: -0.75rem;
 }
 
 .mantine-Select-input {
   width: 100%;
-  color: #0d3b76;
   height: 2.25rem;
+  color: #0d3b76;
   text-align: end;
   border-color: transparent;
   background-color: transparent;
@@ -16,12 +16,8 @@
   outline: none;
 }
 
-.mantine-Select-root {
-  margin-left: auto;
-}
-
 .mantine-Select-dropdown {
-  margin-top: 0.25rem;
+  margin-top: -0.35rem;
 }
 
 .mantine-Select-option {
