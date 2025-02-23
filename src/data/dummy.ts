@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { UserBirthday, FamousBirthday } from '../types';
+import { UserBirthday, FamousBirthday, RecurringEvent } from '../types';
 
 export const VERIFIED_USERS: UserBirthday[] = [
   {
@@ -68,5 +68,31 @@ export const FAMOUS_USERS: FamousBirthday[] = [
     name: 'Black Widow',
     birthday: dayjs().subtract(25, 'year').toDate(),
     occupation: 'Superhero',
+  },
+];
+
+export const siteEvents: RecurringEvent[] = [
+  {
+    month: 9,
+    day: 10,
+  },
+  {
+    month: 1,
+    day: 27,
+  },
+  {
+    month: 1,
+    day: 18,
+  },
+];
+
+export const userEvents: RecurringEvent[] = [
+  {
+    month: new Date().getMonth(),
+    day: new Date().getDate(),
+  },
+  {
+    month: 9,
+    day: 10,
   },
 ];

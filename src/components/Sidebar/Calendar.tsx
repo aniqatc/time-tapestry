@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { DatePicker, DatesProvider } from '@mantine/dates';
 import { Indicator } from '@mantine/core';
 import { useDateStore, DateState } from '../../contexts';
+import { siteEvents, userEvents } from '../../data/dummy';
 
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
@@ -26,38 +27,6 @@ export default function Calendar(): JSX.Element {
     </DatesProvider>
   );
 }
-
-type Event = {
-  month: number;
-  day: number;
-};
-
-/* Hard-coded data for now */
-const siteEvents: Event[] = [
-  {
-    month: 9,
-    day: 10,
-  },
-  {
-    month: 1,
-    day: 27,
-  },
-  {
-    month: 1,
-    day: 18,
-  },
-];
-
-const userEvents: Event[] = [
-  {
-    month: new Date().getMonth(),
-    day: new Date().getDate(),
-  },
-  {
-    month: 9,
-    day: 10,
-  },
-];
 
 function eventRenderer(date: Date): React.ReactNode {
   // Represents each calendar date
