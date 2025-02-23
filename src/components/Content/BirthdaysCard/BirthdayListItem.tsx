@@ -20,7 +20,6 @@ export default function BirthdayListItem({ ...props }: BirthdayListItemProps): J
     <El
       href={user.link}
       target="_blank"
-      key={crypto.randomUUID()}
       className={user.link && 'group hover:text-primary-700 transition-all hover:underline'}
     >
       <li

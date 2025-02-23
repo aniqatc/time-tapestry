@@ -20,7 +20,13 @@ export default function VerifiedUsersCard(): JSX.Element {
             : `${user.name}'s ${user.relation}`;
 
           return (
-            <BirthdayListItem user={user} index={index} type="user" displayName={displayName}>
+            <BirthdayListItem
+              key={crypto.randomUUID()}
+              user={user}
+              index={index}
+              type="user"
+              displayName={displayName}
+            >
               <p className="group-hover:scale-115">
                 <LinkIcon size="18" weight="duotone" />
               </p>

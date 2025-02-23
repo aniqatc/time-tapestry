@@ -14,7 +14,7 @@ export default function PrimaryCard({ ...props }: PrimaryCardProps): JSX.Element
   const selectedDate = useDateStore((state: { selectedDate: Date }) => state.selectedDate);
 
   return (
-    <motion.div
+    <motion.article
       key={selectedDate}
       initial={{ opacity: 0.4, x: 25 }}
       animate={{ opacity: 1, x: 0 }}
@@ -27,6 +27,6 @@ export default function PrimaryCard({ ...props }: PrimaryCardProps): JSX.Element
       >
         {children}
       </div>
-    </motion.div>
+    </motion.article>
   );
 }

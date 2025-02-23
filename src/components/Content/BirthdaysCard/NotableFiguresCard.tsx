@@ -8,7 +8,7 @@ export default function NotableFiguresCard(): JSX.Element {
       <Label className="mb-2">Notable Figures</Label>
       <ul>
         {FAMOUS_USERS.map((user, index) => (
-          <BirthdayListItem user={user} index={index} type="famous">
+          <BirthdayListItem key={crypto.randomUUID()} user={user} index={index} type="famous">
             <span className="bg-primary-300/50 h-[1px] w-full"></span>
             <p className="text-primary-700 shrink-0 font-medium">{user.occupation}</p>
           </BirthdayListItem>
