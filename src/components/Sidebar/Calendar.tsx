@@ -32,11 +32,17 @@ function eventRenderer(date: Date): React.ReactNode {
   // Represents each calendar date
   const day: number = date.getDate();
   const month: number = date.getMonth();
+  const year: number = date.getFullYear();
 
   // Matches the saved events with calendar date & adds relevant color if event exists for that day
   // Month and day must match (in which case, disabled would be set to false)
-  const isSiteEvent = siteEvents.some(event => event.month === month && event.day === day);
-  const isUserEvent = userEvents.some(event => event.month === month && event.day === day);
+  // Year range is between the event year and current year
+  const isSiteEvent = siteEvents.some(
+    event => event.month === month && event.day === day && event.year <= year
+  );
+  const isUserEvent = userEvents.some(
+    event => event.month === month && event.day === day && event.year <= year
+  );
 
   return (
     <Indicator

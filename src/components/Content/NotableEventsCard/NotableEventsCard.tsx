@@ -1,5 +1,6 @@
 import { PrimaryCard } from '../../../components/reusable';
 import { useDateStore } from '../../../contexts';
+import { notableEvents } from '../../../data/dummy';
 import EventItem from './EventItem';
 
 export default function NotableEventsCard(): JSX.Element {
@@ -10,18 +11,11 @@ export default function NotableEventsCard(): JSX.Element {
   return (
     <PrimaryCard heading={`Notable Events on ${shortFormattedDate}`}>
       <ul className="flex flex-col gap-2">
-        <EventItem year={1992} source="#">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </EventItem>
-        <EventItem year={1992} source="#">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </EventItem>
-        <EventItem year={1992} source="#">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </EventItem>
+        {notableEvents.map(event => (
+          <EventItem key={crypto.randomUUID()} source={event.source} year={event.year}>
+            {event.description}
+          </EventItem>
+        ))}
       </ul>
     </PrimaryCard>
   );
