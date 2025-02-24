@@ -1,5 +1,13 @@
 import dayjs from 'dayjs';
-import { UserBirthday, FamousBirthday, RecurringEvent, NotableEvent } from '../types';
+import {
+  UserBirthday,
+  FamousBirthday,
+  RecurringEvent,
+  NotableEvent,
+  MoonData,
+  ZodiacData,
+} from '../types';
+import { Eye, Asterisk, Atom, Planet, Scales } from '@phosphor-icons/react';
 
 export const VERIFIED_USERS: UserBirthday[] = [
   {
@@ -122,3 +130,67 @@ export const notableEvents: NotableEvent[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
 ];
+
+export const MOON_CONTENT: MoonData = {
+  name: 'Waxing Gibbous',
+  content: [
+    {
+      label: 'Phase',
+      value: 'Waxing Gibbous',
+    },
+    {
+      label: 'Visibility',
+      value: '92%',
+      icon: Eye,
+    },
+    {
+      label: 'Sign',
+      value: 'Gemini',
+      icon: Asterisk,
+    },
+    {
+      label: 'Rising',
+      value: '15:42',
+    },
+    {
+      label: 'Setting',
+      value: '03:20',
+    },
+  ],
+};
+
+export const ZODIAC_CONTENT: ZodiacData = {
+  name: 'Virgo',
+  compatible: ['taurus', 'cancer', 'capricorn'],
+  chinese: [
+    {
+      label: 'Animal',
+      value: 'ox',
+    },
+    {
+      label: 'Element',
+      value: 'metal',
+    },
+    {
+      label: 'Yin/Yang',
+      value: 'Yin',
+    },
+  ],
+  content: [
+    {
+      label: 'Element',
+      value: 'earth',
+      icon: Atom,
+    },
+    {
+      label: 'quality',
+      value: 'mutable',
+      icon: Scales,
+    },
+    {
+      label: 'ruling planet',
+      value: 'mercury',
+      icon: Planet,
+    },
+  ],
+};

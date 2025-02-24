@@ -24,7 +24,11 @@ export default function TabbedAstrologyCard(): JSX.Element {
       <div className="relative top-9 z-10 lg:top-0">
         {TABS.map(
           (tab, index) =>
-            active === index && <PrimaryCard key={tab.label}>{tab.content}</PrimaryCard>
+            active === index && (
+              <PrimaryCard key={tab.label} className="min-h-44">
+                {tab.content}
+              </PrimaryCard>
+            )
         )}
       </div>
     </>
