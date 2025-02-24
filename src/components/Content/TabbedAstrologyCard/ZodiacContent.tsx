@@ -31,8 +31,8 @@ export default function ZodiacContent(): JSX.Element {
           </LinedListItem>
           <li className="@container flex items-center justify-between gap-2">
             <span className="flex items-center gap-1 text-sm font-semibold @max-xs:self-start">
-              <Heart size={14} weight="duotone" className="text-primary-400" />
-              Compatible Signs
+              <Heart size={14} weight="duotone" className="text-red-400" />
+              Compatible
             </span>
             <span className="bg-primary-300/50 hidden h-[1px] w-full @xs:block"></span>
             <ul className="flex flex-col items-end gap-1.5 *:w-min @max-xs:flex-col @xs:flex-row @xs:items-center">

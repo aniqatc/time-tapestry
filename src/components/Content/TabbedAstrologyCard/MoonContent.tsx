@@ -1,4 +1,5 @@
 import SAMPLE from '../../../assets/moon-phases/waxing-gibbous.svg';
+import { motion } from 'framer-motion';
 import { LinedListItem } from '../../reusable';
 import { Eye, Asterisk } from '@phosphor-icons/react';
 
@@ -8,7 +9,14 @@ export default function MoonContent(): JSX.Element {
       <p className="text-primary-400 -mt-1 text-end text-xs">Detected Location: New York, NY</p>
       <div className="-mt-1 flex flex-nowrap items-center justify-between gap-4 @max-xs:mt-2 @max-xs:flex-col @max-xs:gap-2">
         <figure className="flex flex-col gap-2 px-5 py-2">
-          <img src={SAMPLE} alt="" className="h-24" />
+          <motion.img
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.2, type: 'spring', stiffness: 100 }}
+            src={SAMPLE}
+            alt=""
+            className="h-24"
+          />
           <figcaption className="text-primary-400 text-xs font-medium text-nowrap">
             Waxing Gibbous
           </figcaption>
