@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon, Planet, MoonStars, Star, Flag } from '@phosphor-icons/react';
 import PlanetContent from '../components/Content/TabbedAstrologyCard/PlanetContent';
 import MoonContent from '../components/Content/TabbedAstrologyCard/MoonContent';
-import ZodiacContent from '../components/Content/TabbedAstrologyCard/ZodiacContext';
+import ZodiacContent from '../components/Content/TabbedAstrologyCard/ZodiacContent';
 import AstronomyEventContent from '../components/Content/TabbedAstrologyCard/AstronomyEventContent';
 
 interface AstrologyTab {

@@ -4,3 +4,4 @@ export { default as InputWrapper } from './InputWrapper';
 export { default as PrimaryButton } from './PrimaryButton';
 export { default as PrimaryCard } from './PrimaryCard';
 export { default as Label } from './Label';
+export { default as SecondaryCard } from './SecondaryCard';
