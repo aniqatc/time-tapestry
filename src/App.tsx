@@ -2,9 +2,10 @@ import { Header, Sidebar, Content } from './components';
 
 function App(): JSX.Element {
   return (
-    <div className="h-screen pb-12">
+    <div className="h-screen overflow-y-auto">
       <Header />
       <main className="flex h-full gap-2">
+        <hr className="xs:sticky pointer-events-none min-w-[50px] opacity-0 sm:min-w-[315px] lg:hidden" />
         <Sidebar />
         <Content />
       </main>

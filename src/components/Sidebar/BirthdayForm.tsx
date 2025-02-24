@@ -16,7 +16,7 @@ export default function BirthdayForm(): JSX.Element {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [link, setLink] = useState<string>('');
-  const [relation, setRelation] = useState<string>(null);
+  const [relation, setRelation] = useState<string>('');
 
   return (
     <form
