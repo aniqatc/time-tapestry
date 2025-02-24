@@ -28,7 +28,7 @@ export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
       <motion.aside
         initial={false}
         animate={{ width: isExpanded ? 315 : 50 }}
-        className={`shadow-primary border-primary-200 fixed z-100 mr-auto flex h-[90%] flex-col items-center gap-2 rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 max-sm:cursor-pointer ${className}`}
+        className={`shadow-primary border-primary-200 fixed z-100 mr-auto flex h-[88%] flex-col items-center gap-2 rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 max-sm:cursor-pointer ${className}`}
         onMouseEnter={() => width < 640 && setIsExpanded(true)}
         onMouseLeave={() => width < 640 && setIsExpanded(false)}
         onClick={() => width < 640 && setIsExpanded(true)}

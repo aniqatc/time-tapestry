@@ -8,7 +8,7 @@ interface HeaderProps {
 export default function Header({ className = '' }: HeaderProps): JSX.Element {
   return (
     <header
-      className={`bg-primary-25/25 sticky top-0 flex items-center justify-between px-3 py-4 backdrop-blur-xs ${className}`}
+      className={`bg-primary-25/25 sticky top-0 z-100 flex items-center justify-between px-3 pt-4 pb-1 backdrop-blur-xs ${className}`}
     >
       <Heading>timetapestry</Heading>
       <ThemeToggle />

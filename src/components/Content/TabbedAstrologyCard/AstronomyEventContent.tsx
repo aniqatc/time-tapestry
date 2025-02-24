@@ -1,4 +1,4 @@
-import { SecondaryCard } from '../../reusable';
+import { InnerHeading, SecondaryCard } from '../../reusable';
 import { Lightning, MapPin, ArrowUpRight } from '@phosphor-icons/react';
 
 interface EVENT {
@@ -50,12 +50,12 @@ const EXAMPLE_EVENTS: EVENT[] = [
 export default function AstronomyEventContent(): JSX.Element {
   return (
     <>
-      <h3 className="text-primary-600 mb-1 text-base font-medium">Special Astronomy Events</h3>
+      <InnerHeading title="Special Astronomy Events" />
       <ul className="flex flex-wrap gap-2 md:flex-nowrap">
         {EXAMPLE_EVENTS.map(event => {
           return (
             <SecondaryCard key={crypto.randomUUID()} source={event.source} className="group">
-              <li className="flex flex-col gap-4">
+              <li className="flex flex-col gap-3">
                 <span className="flex items-center justify-between gap-1 text-base font-semibold">
                   <Lightning size={16} weight="duotone" />
                   <span className="mr-auto">{event.year}</span>
