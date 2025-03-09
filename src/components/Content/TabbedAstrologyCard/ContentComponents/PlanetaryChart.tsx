@@ -63,8 +63,8 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
   }
 
   return (
-    <div className="w-72">
-      <svg viewBox="0 0 170 150" className="h-full w-full">
+    <div className="mx-auto max-w-68">
+      <svg viewBox="0 0 160 150" className="h-full w-full">
         {/* Base circle with animation */}
         <motion.circle
           initial={{ scale: 0 }}
