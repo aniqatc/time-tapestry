@@ -218,7 +218,7 @@ export const PLANET_POSITIONS: PlanetaryPositionData[] = [
     name: 'Sun',
     sign: 'Sagittarius',
     degree: 15,
-    color: '#D3CB5D',
+    color: '#bcb245',
     magnitude: -26.77,
   },
   {

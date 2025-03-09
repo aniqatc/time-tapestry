@@ -1,28 +1,29 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { motion } from 'framer-motion';
 import { PlanetaryPositionData } from '../../../../types';
 
 interface PlanetaryChartProps {
   planets: PlanetaryPositionData[];
   zodiacSigns: string[];
+  hoveredPlanet: string;
+  setHoveredPlanet: Dispatch<SetStateAction<string>>;
 }
 
 export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.Element {
-  const [hoveredPlanet, setHoveredPlanet] = useState('');
-  const { planets, zodiacSigns } = props;
-  const CENTER_X = 75;
-  const CENTER_Y = 75;
-  const RADIUS = 65;
+  const { planets, zodiacSigns, hoveredPlanet, setHoveredPlanet } = props;
+  const CENTER_X: number = 70;
+  const CENTER_Y: number = 70;
+  const RADIUS: number = 60;
 
   // Calculate position on the circle based on zodiac sign and degree
-  function getPlanetPosition(sign: string, degree: number) {
+  function getPlanetPosition(sign: string, degree: number): { x: number; y: number } {
     if (!sign || degree === undefined) {
       return { x: CENTER_X, y: CENTER_Y };
     }
 
-    const signIndex = zodiacSigns.indexOf(sign);
-    const totalDegrees = signIndex * 30 + degree;
-    const radian = (totalDegrees - 90) * (Math.PI / 180);
+    const signIndex: number = zodiacSigns.indexOf(sign);
+    const totalDegrees: number = signIndex * 30 + degree;
+    const radian: number = (totalDegrees - 90) * (Math.PI / 180);
 
     return {
       x: CENTER_X + (RADIUS - 40) * Math.cos(radian),
@@ -33,11 +34,11 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
   // Get text position for zodiac sign
   function getZodiacTextPosition(index: number) {
     // Calculate the middle angle of the sign's sector
-    const middleAngle = index * 30 + 15; // 30 degrees per sign, +15 for middle
-    const angleInRad = (middleAngle - 90) * (Math.PI / 180);
+    const middleAngle: number = index * 30 + 15; // 30 degrees per sign, +15 for middle
+    const angleInRad: number = (middleAngle - 90) * (Math.PI / 180);
 
     // Position text slightly outside the circle
-    const labelRadius = RADIUS + 6;
+    const labelRadius: number = RADIUS + 6;
 
     return {
       x: CENTER_X + labelRadius * Math.cos(angleInRad),
@@ -48,23 +49,23 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
   }
 
   // Size planet based on magnitude (brightness)
-  function getPlanetSize(magnitude: number) {
+  function getPlanetSize(magnitude: number): number {
     if (!magnitude) return 3;
     // In astronomy, magnitude is a reverse scale (more negative = brighter)
     // e.g., Sun: -26.77 (very bright), Saturn: 0.51 (much dimmer)
 
     // Convert magnitude to a positive number (invert the scale)
     // Then cap between 0 and 15 to avoid extreme sizes
-    const adjustedMag = Math.min(Math.max(-magnitude, 0), 15);
+    const adjustedMag: number = Math.min(Math.max(-magnitude, 0), 15);
 
     // Apply a moderate multiplier (0.3) to create noticeable but not extreme differences
     // Ensures minimum size of 3 pixels for visibility
-    return Math.max(adjustedMag * 0.3, 3);
+    return Math.max(adjustedMag * 0.2, 2);
   }
 
   return (
     <div className="mx-auto max-w-68">
-      <svg viewBox="0 0 160 150" className="h-full w-full">
+      <svg viewBox="0 0 140 140" className="h-full w-full">
         {/* Base circle with animation */}
         <motion.circle
           initial={{ scale: 0 }}
@@ -120,7 +121,7 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
                 y={textPos.y}
                 textAnchor="middle"
                 dominantBaseline="central"
-                fontSize="7"
+                fontSize="6"
                 fill="#64748B"
                 transform={
                   textPos.shouldFlip
@@ -133,6 +134,16 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
             </motion.g>
           );
         })}
+
+        {/* Center dot */}
+        <motion.circle
+          cx={CENTER_X}
+          cy={CENTER_Y}
+          r={2}
+          fill="#CBD5E1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        />
 
         {/* Planets with pop animation */}
         {planets.map((planet: PlanetaryPositionData, index: number) => {
@@ -149,7 +160,7 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
               <motion.circle
                 cx={pos.x}
                 cy={pos.y}
-                r={size || 5}
+                r={size || 2.5}
                 fill={planet.color || '#CBD5E1'}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{
@@ -174,10 +185,10 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   x={pos.x}
-                  y={pos.y - 7}
+                  y={pos.y - 5}
                   textAnchor="middle"
                   fill={planet.color}
-                  fontSize="8"
+                  fontSize="7"
                   fontWeight="bold"
                 >
                   {`${planet.name} ${planet.degree}°`}
@@ -186,16 +197,6 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
             </motion.g>
           );
         })}
-
-        {/* Center dot */}
-        <motion.circle
-          cx={CENTER_X}
-          cy={CENTER_Y}
-          r={2}
-          fill="#CBD5E1"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        />
       </svg>
     </div>
   );

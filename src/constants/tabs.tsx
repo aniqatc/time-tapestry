@@ -12,8 +12,8 @@ interface AstrologyTab {
 }
 
 export const TABS: AstrologyTab[] = [
-  { label: 'Planets', Icon: Planet, content: <PlanetContent /> },
   { label: 'Moon', Icon: MoonStars, content: <MoonContent /> },
+  { label: 'Planets', Icon: Planet, content: <PlanetContent /> },
   { label: 'Zodiac', Icon: Star, content: <ZodiacContent /> },
   { label: 'Events', Icon: Flag, content: <AstronomyEventContent /> },
 ];
