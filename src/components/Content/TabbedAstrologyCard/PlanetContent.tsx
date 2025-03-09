@@ -6,7 +6,7 @@ export default function PlanetContent(): JSX.Element {
   return (
     <div className="flex items-center gap-1">
       <PlanetaryChart planets={PLANET_POSITIONS} zodiacSigns={ZODIAC_SIGNS} />
-      <PlanetaryLegend planets={PLANET_POSITIONS} zodiacSigns={ZODIAC_SIGNS} />
+      <PlanetaryLegend planets={PLANET_POSITIONS} />
     </div>
   );
 }

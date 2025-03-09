@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { PlanetaryPositionData } from '../../../../types';
 
-export default function PlanetaryChart({ planets, zodiacSigns }): JSX.Element {
+interface PlanetaryChartProps {
+  planets: PlanetaryPositionData[];
+  zodiacSigns: string[];
+}
+
+export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.Element {
   const [hoveredPlanet, setHoveredPlanet] = useState('');
-  const CENTER_X = 90;
-  const CENTER_Y = 90;
-  const RADIUS = 75;
+  const { planets, zodiacSigns } = props;
+  const CENTER_X = 75;
+  const CENTER_Y = 75;
+  const RADIUS = 65;
 
   // Calculate position on the circle based on zodiac sign and degree
-  function getPlanetPosition(sign, degree) {
+  function getPlanetPosition(sign: string, degree: number) {
     if (!sign || degree === undefined) {
       return { x: CENTER_X, y: CENTER_Y };
     }
@@ -24,7 +31,7 @@ export default function PlanetaryChart({ planets, zodiacSigns }): JSX.Element {
   }
 
   // Get text position for zodiac sign
-  function getZodiacTextPosition(index) {
+  function getZodiacTextPosition(index: number) {
     // Calculate the middle angle of the sign's sector
     const middleAngle = index * 30 + 15; // 30 degrees per sign, +15 for middle
     const angleInRad = (middleAngle - 90) * (Math.PI / 180);
@@ -41,7 +48,7 @@ export default function PlanetaryChart({ planets, zodiacSigns }): JSX.Element {
   }
 
   // Size planet based on magnitude (brightness)
-  function getPlanetSize(magnitude) {
+  function getPlanetSize(magnitude: number) {
     if (!magnitude) return 3;
     // In astronomy, magnitude is a reverse scale (more negative = brighter)
     // e.g., Sun: -26.77 (very bright), Saturn: 0.51 (much dimmer)
@@ -57,7 +64,7 @@ export default function PlanetaryChart({ planets, zodiacSigns }): JSX.Element {
 
   return (
     <div className="w-72">
-      <svg viewBox="0 0 190 180" className="h-full w-full">
+      <svg viewBox="0 0 170 150" className="h-full w-full">
         {/* Base circle with animation */}
         <motion.circle
           initial={{ scale: 0 }}
@@ -128,7 +135,7 @@ export default function PlanetaryChart({ planets, zodiacSigns }): JSX.Element {
         })}
 
         {/* Planets with pop animation */}
-        {planets.map((planet, index) => {
+        {planets.map((planet: PlanetaryPositionData, index: number) => {
           const pos = getPlanetPosition(planet.sign, planet.degree);
           const isHovered = hoveredPlanet === planet.name;
           const size = getPlanetSize(planet.magnitude);

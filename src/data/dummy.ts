@@ -6,6 +6,7 @@ import {
   NotableEvent,
   MoonData,
   ZodiacData,
+  PlanetaryPositionData,
 } from '../types';
 import { Eye, Asterisk, Atom, Planet, Scales } from '@phosphor-icons/react';
 
@@ -195,7 +196,7 @@ export const ZODIAC_CONTENT: ZodiacData = {
   ],
 };
 // Zodiac signs in order
-export const ZODIAC_SIGNS = [
+export const ZODIAC_SIGNS: string[] = [
   'Aries',
   'Taurus',
   'Gemini',
@@ -212,7 +213,7 @@ export const ZODIAC_SIGNS = [
 
 // Hardcoded planet data based on API response
 // (from https://docs.astronomyapi.com/endpoints/bodies/positions)
-export const PLANET_POSITIONS = [
+export const PLANET_POSITIONS: PlanetaryPositionData[] = [
   {
     name: 'Sun',
     sign: 'Sagittarius',
