@@ -194,3 +194,72 @@ export const ZODIAC_CONTENT: ZodiacData = {
     },
   ],
 };
+// Zodiac signs in order
+export const ZODIAC_SIGNS = [
+  'Aries',
+  'Taurus',
+  'Gemini',
+  'Cancer',
+  'Leo',
+  'Virgo',
+  'Libra',
+  'Scorpio',
+  'Sagittarius',
+  'Capricorn',
+  'Aquarius',
+  'Pisces',
+];
+
+// Hardcoded planet data based on API response
+// (from https://docs.astronomyapi.com/endpoints/bodies/positions)
+export const PLANET_POSITIONS = [
+  {
+    name: 'Sun',
+    sign: 'Sagittarius',
+    degree: 15,
+    color: '#FFB400',
+    magnitude: -26.77,
+  },
+  {
+    name: 'Moon',
+    sign: 'Aquarius',
+    degree: 10,
+    color: '#6B7280',
+    magnitude: -9.45,
+  },
+  {
+    name: 'Mercury',
+    sign: 'Sagittarius',
+    degree: 20,
+    color: '#9333EA',
+    magnitude: -1.31,
+  },
+  {
+    name: 'Venus',
+    sign: 'Scorpio',
+    degree: 15,
+    color: '#16A34A',
+    magnitude: -3.87,
+  },
+  {
+    name: 'Mars',
+    sign: 'Pisces',
+    degree: 5,
+    color: '#DC2626',
+    magnitude: -0.54,
+  },
+  {
+    name: 'Jupiter',
+    sign: 'Capricorn',
+    degree: 10,
+    color: '#2563EB',
+    magnitude: -1.97,
+  },
+  {
+    name: 'Saturn',
+    sign: 'Capricorn',
+    degree: 15,
+    color: '#8B5CF6',
+    magnitude: 0.51,
+  },
+];
