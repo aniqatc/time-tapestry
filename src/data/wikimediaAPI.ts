@@ -66,7 +66,7 @@ export async function fetchBirthdaysFromWikimedia(day: number, month: number): P
         name: `${name.split(' ')[0]} ${name.split(' ')[1] || ''}`,
         pageCount: person.pages?.length,
         link: person.pages?.[0]?.content_urls?.desktop?.page,
-        occupation: occupation.length > 5 ? occupation : '',
+        occupation: occupation.length > 4 ? occupation : '',
       };
     });
 
