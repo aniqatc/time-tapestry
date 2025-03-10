@@ -8,7 +8,22 @@ import {
   ZodiacData,
   PlanetaryPositionData,
 } from '../types';
-import { Eye, Asterisk, Atom, Planet, Scales } from '@phosphor-icons/react';
+import {
+  Eye,
+  Asterisk,
+  Atom,
+  Planet,
+  Scales,
+  Icon,
+  Calendar,
+  CalendarX,
+  Star,
+  StarHalf,
+  UsersThree,
+  ChartLineUp,
+  HourglassHigh,
+  HourglassLow,
+} from '@phosphor-icons/react';
 
 export const VERIFIED_USERS: UserBirthday[] = [
   {
@@ -262,5 +277,52 @@ export const PLANET_POSITIONS: PlanetaryPositionData[] = [
     degree: 15,
     color: '#C16718',
     magnitude: 0.51,
+  },
+];
+
+export const ON_THIS_SITE_DATA: {
+  Icon: Icon;
+  stat: string;
+  value: string;
+}[] = [
+  {
+    Icon: Calendar,
+    stat: 'Most Common Birthday',
+    value: '02/27',
+  },
+  {
+    Icon: CalendarX,
+    stat: 'Unclaimed',
+    value: '291 days without entries',
+  },
+  {
+    Icon: Star,
+    stat: 'Top Zodiac',
+    value: 'Virgo with 21 users',
+  },
+  {
+    Icon: StarHalf,
+    stat: 'Least Zodiac',
+    value: 'Aries with 0 users',
+  },
+  {
+    Icon: UsersThree,
+    stat: 'Top Generation',
+    value: 'Millennials',
+  },
+  {
+    Icon: ChartLineUp,
+    stat: 'Average Age',
+    value: '28 years',
+  },
+  {
+    Icon: HourglassHigh,
+    stat: 'Oldest Age',
+    value: '53 years',
+  },
+  {
+    Icon: HourglassLow,
+    stat: 'Youngest Age',
+    value: '20 years',
   },
 ];
