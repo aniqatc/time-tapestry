@@ -46,19 +46,29 @@ export async function fetchBirthdaysFromWikimedia(day: number, month: number): P
       const tensesForText = person.text.includes(' is ') || !person.text.includes(' was ');
       return noDeathInfoAvailable && birthAfter1920 && textHasNoDeathMention && tensesForText;
     });
-    const filteredBirthdays = livingPeople.map(person => ({
-      birthday: new Date(person.year, month, day),
-      name: person.text.split(',')[0],
-      pageCount: person.pages?.length,
-      link: person.pages?.[0]?.content_urls?.desktop?.page,
-      occupation: person?.text
-        .split(',')[1]
-        ?.split('and')[0]
-        ?.split('(')[0]
-        ?.split(' known as ')[0]
-        ?.split('for')[0]
-        ?.split(';')[0],
-    }));
+
+    const filteredBirthdays = livingPeople.map(person => {
+      const name = person.text.split(',')[0]?.split('-')[0];
+      const occupation =
+        person?.text
+          .split(',')[1]
+          ?.split('and')[0]
+          ?.split('(')[0]
+          ?.split(' known as ')[0]
+          ?.split('for')[0]
+          ?.split(';')[0]
+          ?.trim()
+          ?.split('of')[0]
+          ?.split(' ')[1] || '';
+
+      return {
+        birthday: new Date(person.year, month, day),
+        name: `${name.split(' ')[0]} ${name.split(' ')[1] || ''}`,
+        pageCount: person.pages?.length,
+        link: person.pages?.[0]?.content_urls?.desktop?.page,
+        occupation: occupation.length > 5 ? occupation : '',
+      };
+    });
 
     return filteredBirthdays.sort((a, b) => b.pageCount - a.pageCount).slice(0, 5);
   } catch {
