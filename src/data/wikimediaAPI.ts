@@ -1,4 +1,5 @@
 import { NotableEvent } from '../types';
+import { FamousBirthday } from '../types';
 
 export async function fetchEventsFromWikimedia(day: number, month: number): Promise<NotableEvent[]> {
   try {
@@ -16,6 +17,48 @@ export async function fetchEventsFromWikimedia(day: number, month: number): Prom
     }));
 
     return filteredEvents.sort((a, b) => b.pageCount - a.pageCount).slice(0, 3);
+  } catch {
+    console.log('Error fetching data from the Wikimedia API. Please try again later.');
+    return [];
+  }
+}
+
+export async function fetchBirthdaysFromWikimedia(day: number, month: number): Promise<FamousBirthday[]> {
+  try {
+    const url = `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/births/${day}/${month + 1}`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const livingPeople = data.births.filter(person => {
+      const noDeathInfoAvailable = !person.deaths;
+      const birthAfter1920 = person.year > 1920;
+      const textHasNoDeathMention =
+        person.pages && person.pages[0] && person.pages[0].extract
+          ? !person.pages[0].extract.toLowerCase().includes(' died ') &&
+            !person.pages[0].extract.toLowerCase().includes(' passed away ') &&
+            !person.pages[0].extract.toLowerCase().includes(' deceased ') &&
+            !person.pages[0].extract.toLowerCase().includes(' suicide ') &&
+            !person.pages[0].extract.toLowerCase().includes(' killed ')
+          : true;
+
+      const tensesForText = person.text.includes(' is ') || !person.text.includes(' was ');
+      return noDeathInfoAvailable && birthAfter1920 && textHasNoDeathMention && tensesForText;
+    });
+    const filteredBirthdays = livingPeople.map(person => ({
+      birthday: new Date(person.year, month, day),
+      name: person.text.split(',')[0],
+      pageCount: person.pages?.length,
+      link: person.pages?.[0]?.content_urls?.desktop?.page,
+      occupation: person?.text
+        .split(',')[1]
+        ?.split('and')[0]
+        ?.split('(')[0]
+        ?.split(' known as ')[0]
+        ?.split('for')[0]
+        ?.split(';')[0],
+    }));
+
+    return filteredBirthdays.sort((a, b) => b.pageCount - a.pageCount).slice(0, 5);
   } catch {
     console.log('Error fetching data from the Wikimedia API. Please try again later.');
     return [];

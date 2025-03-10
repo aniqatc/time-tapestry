@@ -12,4 +12,5 @@ export interface UserBirthday extends Birthday {
 
 export interface FamousBirthday extends Birthday {
   occupation?: string;
+  pageCount?: number;
 }

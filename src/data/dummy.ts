@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { UserBirthday, FamousBirthday, RecurringEvent, MoonData, ZodiacData, PlanetaryPositionData } from '../types';
+import { UserBirthday, RecurringEvent, MoonData, ZodiacData, PlanetaryPositionData } from '../types';
 import {
   Eye,
   Asterisk,
@@ -50,40 +50,6 @@ export const VERIFIED_USERS: UserBirthday[] = [
     name: 'janedoe',
     birthday: dayjs().subtract(25, 'year').toDate(),
     relation: 'Husband',
-  },
-];
-
-export const FAMOUS_USERS: FamousBirthday[] = [
-  {
-    name: 'Super Man',
-    birthday: dayjs().subtract(20, 'year').toDate(),
-    link: '/',
-    occupation: 'Superhero',
-  },
-  {
-    name: 'Iron Man',
-    birthday: dayjs().subtract(11, 'year').toDate(),
-  },
-  {
-    name: 'Tony Stark',
-    birthday: dayjs().subtract(58, 'year').toDate(),
-    link: 'https://tonystark.com',
-    occupation: 'Businessman',
-  },
-  {
-    name: 'Donald Trump',
-    birthday: dayjs().subtract(48, 'year').toDate(),
-    link: 'https://twitter.com/trump',
-    occupation: 'President',
-  },
-  {
-    name: 'King Kong',
-    birthday: dayjs().subtract(58, 'year').toDate(),
-  },
-  {
-    name: 'Black Widow',
-    birthday: dayjs().subtract(25, 'year').toDate(),
-    occupation: 'Superhero',
   },
 ];
 

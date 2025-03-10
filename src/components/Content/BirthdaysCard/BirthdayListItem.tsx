@@ -1,6 +1,9 @@
 import React from 'react';
 import { UserBirthday, FamousBirthday } from '../../../types';
+import { useDateStore } from '../../../contexts';
 import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
 
 interface BirthdayListItemProps {
   index: number;
@@ -11,6 +14,7 @@ interface BirthdayListItemProps {
 }
 
 export default function BirthdayListItem({ ...props }: BirthdayListItemProps): JSX.Element | null {
+  const selectedDate = useDateStore((state: { selectedDate: Date }) => state.selectedDate);
   const { user, type, displayName, index, children } = props;
 
   if (index >= 5) return null;
@@ -22,17 +26,13 @@ export default function BirthdayListItem({ ...props }: BirthdayListItemProps): J
       target="_blank"
       className={user.link && 'group hover:text-primary-700 transition-all hover:underline'}
     >
-      <li
-        className={`mb-0.5 flex items-center justify-between gap-2 ${type === 'user' && 'lowercase'}`}
-      >
+      <li className={`mb-0.5 flex items-center justify-between gap-2 ${type === 'user' && 'lowercase'}`}>
         <p className="shrink-0">
           <span className="font-medium transition-all group-hover:font-bold">
             {type === 'user' ? displayName : user.name}
           </span>{' '}
           turns{' '}
-          <span className="text-primary-700 font-medium">
-            {dayjs().year() - dayjs(user.birthday).year()}
-          </span>
+          <span className="text-primary-700 font-medium">{dayjs(selectedDate).diff(dayjs(user.birthday), 'year')}</span>
         </p>
         {children}
       </li>
