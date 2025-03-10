@@ -5,7 +5,7 @@ const API_URL = 'https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday';
 
 export async function fetchEventsFromWikimedia(day: number, month: number): Promise<NotableEvent[]> {
   try {
-    const url = `${API_URL}/events/${day}/${month + 1}`;
+    const url = `${API_URL}/events/${month + 1}/${day}`;
     const response = await fetch(url);
     const data = await response.json();
 
@@ -27,7 +27,7 @@ export async function fetchEventsFromWikimedia(day: number, month: number): Prom
 
 export async function fetchBirthdaysFromWikimedia(day: number, month: number): Promise<FamousBirthday[]> {
   try {
-    const url = `${API_URL}/births/${day}/${month + 1}`;
+    const url = `${API_URL}/births/${month + 1}/${day}`;
     const response = await fetch(url);
     const data = await response.json();
 
@@ -59,7 +59,8 @@ export async function fetchBirthdaysFromWikimedia(day: number, month: number): P
           ?.split(';')[0]
           ?.trim()
           ?.split('of')[0]
-          ?.split(' ')[1] || '';
+          ?.split(' ')[1]
+          ?.split('-')[0] || '';
 
       return {
         birthday: new Date(person.year, month, day),
