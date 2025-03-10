@@ -1,13 +1,5 @@
 import dayjs from 'dayjs';
-import {
-  UserBirthday,
-  FamousBirthday,
-  RecurringEvent,
-  NotableEvent,
-  MoonData,
-  ZodiacData,
-  PlanetaryPositionData,
-} from '../types';
+import { UserBirthday, FamousBirthday, RecurringEvent, MoonData, ZodiacData, PlanetaryPositionData } from '../types';
 import {
   Eye,
   Asterisk,
@@ -123,27 +115,6 @@ export const userEvents: RecurringEvent[] = [
     month: 9,
     day: 10,
     year: 2024,
-  },
-];
-
-export const notableEvents: NotableEvent[] = [
-  {
-    year: 1992,
-    source: '#',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  },
-  {
-    year: 2010,
-    source: '#',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  },
-  {
-    year: 2000,
-    source: '#',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
 ];
 

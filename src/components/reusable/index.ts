@@ -7,3 +7,4 @@ export { default as Label } from './Label';
 export { default as SecondaryCard } from './SecondaryCard';
 export { default as InnerHeading } from './InnerHeading';
 export { default as LinedListItem } from './LinedListItem';
+export { default as Loading } from './Loading';

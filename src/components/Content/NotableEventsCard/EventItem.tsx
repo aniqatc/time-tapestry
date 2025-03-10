@@ -10,6 +10,7 @@ interface EventItemProps {
 
 export default function EventItem({ ...props }: EventItemProps): JSX.Element {
   const { source, year, children } = props;
+
   return (
     <li>
       <a
@@ -21,9 +22,7 @@ export default function EventItem({ ...props }: EventItemProps): JSX.Element {
         <Label className="group-hover:text-primary-500 group-active:text-primary-500" number={true}>
           {year}
         </Label>
-        <span className="group-hover:text-primary-700 group-active:text-primary-700 mr-auto">
-          {children}
-        </span>
+        <span className="group-hover:text-primary-700 group-active:text-primary-700 mr-auto">{children}</span>
         <ArrowUpRight
           size={20}
           className="text-primary-30 group-active:text-primary-800 group-hover:text-primary-800 mt-1 ml-2 shrink-0 group-hover:rotate-45 group-active:rotate-45"
