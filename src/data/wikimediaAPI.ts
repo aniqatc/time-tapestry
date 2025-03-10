@@ -1,9 +1,11 @@
 import { NotableEvent } from '../types';
 import { FamousBirthday } from '../types';
 
+const API_URL = 'https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday';
+
 export async function fetchEventsFromWikimedia(day: number, month: number): Promise<NotableEvent[]> {
   try {
-    const url = `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/events/${day}/${month + 1}`;
+    const url = `${API_URL}/events/${day}/${month + 1}`;
     const response = await fetch(url);
     const data = await response.json();
 
@@ -25,7 +27,7 @@ export async function fetchEventsFromWikimedia(day: number, month: number): Prom
 
 export async function fetchBirthdaysFromWikimedia(day: number, month: number): Promise<FamousBirthday[]> {
   try {
-    const url = `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/births/${day}/${month + 1}`;
+    const url = `${API_URL}/births/${day}/${month + 1}`;
     const response = await fetch(url);
     const data = await response.json();
 
