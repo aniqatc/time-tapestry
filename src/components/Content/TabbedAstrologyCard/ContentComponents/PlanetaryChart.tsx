@@ -93,12 +93,7 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
           const textPos = getZodiacTextPosition(i);
 
           return (
-            <motion.g
-              key={sign}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: i * 0.05 }}
-            >
+            <motion.g key={sign} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.05 }}>
               {/* Segment line */}
               <motion.line
                 initial={{ pathLength: 0 }}
@@ -156,6 +151,8 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
               key={planet.name}
               onHoverStart={() => setHoveredPlanet(planet.name)}
               onHoverEnd={() => setHoveredPlanet('')}
+              onTouchStart={() => setHoveredPlanet(planet.name)}
+              onTouchEnd={() => setHoveredPlanet('')}
             >
               <motion.circle
                 cx={pos.x}

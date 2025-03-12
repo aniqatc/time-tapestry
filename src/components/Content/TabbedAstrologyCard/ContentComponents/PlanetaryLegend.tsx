@@ -26,6 +26,8 @@ export default function PlanetaryLegend({ ...props }: PlanetaryLegendProps): JSX
             key={planet.name}
             onHoverStart={() => setHoveredPlanet(planet.name)}
             onHoverEnd={() => setHoveredPlanet('')}
+            onTouchStart={() => setHoveredPlanet(planet.name)}
+            onTouchEnd={() => setHoveredPlanet('')}
           >
             {Icon && (
               <span
@@ -38,12 +40,8 @@ export default function PlanetaryLegend({ ...props }: PlanetaryLegendProps): JSX
                 />
               </span>
             )}
-            <span
-              className={hoveredPlanet === planet.name ? 'text-primary-800' : 'text-primary-500'}
-            >
-              <p
-                className={`text-base leading-5 ${hoveredPlanet === planet.name ? 'font-semibold' : 'font-normal'}`}
-              >
+            <span className={hoveredPlanet === planet.name ? 'text-primary-800' : 'text-primary-500'}>
+              <p className={`text-base leading-5 ${hoveredPlanet === planet.name ? 'font-semibold' : 'font-normal'}`}>
                 {planet.name}
               </p>
               <p className="text-xs">
