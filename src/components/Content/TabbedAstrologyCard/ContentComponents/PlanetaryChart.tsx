@@ -74,8 +74,8 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
           cx={CENTER_X}
           cy={CENTER_Y}
           r={RADIUS}
-          fill="#F1F5F9"
-          stroke="#E2E8F0"
+          fill="var(--tt-primary-75)"
+          stroke="var(--tt-primary-200)"
           strokeWidth="1"
         />
 
@@ -103,7 +103,7 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
                 y1={CENTER_Y}
                 x2={lineEndX}
                 y2={lineEndY}
-                stroke="#E2E8F0"
+                stroke="var(--tt-primary-200)"
                 strokeWidth="1"
               />
 
@@ -117,7 +117,7 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
                 textAnchor="middle"
                 dominantBaseline="central"
                 fontSize="6"
-                fill="#64748B"
+                fill="var(--tt-primary-600)"
                 transform={
                   textPos.shouldFlip
                     ? `rotate(${textPos.angle + 180}, ${textPos.x}, ${textPos.y})`
@@ -135,7 +135,7 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
           cx={CENTER_X}
           cy={CENTER_Y}
           r={2}
-          fill="#CBD5E1"
+          fill="var(--tt-primary-300)"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         />
@@ -158,7 +158,7 @@ export default function PlanetaryChart({ ...props }: PlanetaryChartProps): JSX.E
                 cx={pos.x}
                 cy={pos.y}
                 r={size || 2.5}
-                fill={planet.color || '#CBD5E1'}
+                fill={planet.color || 'var(--tt-primary-300)'}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{
                   scale: isHovered ? 1.3 : 1,

@@ -12,6 +12,7 @@ import '../../styles/select.css';
 export default function BirthdayForm(): JSX.Element {
   const formattedDate = useDateStore((state: { formattedDate: string }) => state.formattedDate);
   const selectedDate = useDateStore((state: { selectedDate: Date }) => state.selectedDate);
+  const setSelectedDate = useDateStore(state => state.setSelectedDate);
   const addBirthday = useBirthdayStore(state => state.addBirthday);
   const refreshBirthdays = useBirthdayStore(state => state.loadBirthdays);
   const birthdays = useBirthdayStore(state => state.birthdays);
@@ -88,29 +89,39 @@ export default function BirthdayForm(): JSX.Element {
 
   return (
     <form
-      className="mt-2 flex w-full flex-col gap-2"
+      className="mt-3 flex w-full flex-col gap-2"
       autoComplete="off"
       noValidate
       onSubmit={event => void handleSubmit(event)}
     >
-      <InputWrapper id="date" icon={<CalendarDots size={24} weight="duotone" />} label="Selected">
+      <div className="flex items-center justify-between gap-2">
+        <h3 className="text-primary-800 text-sm font-semibold">Add a birthday</h3>
+        <p className="text-primary-500 text-[10px]">Private by default</p>
+      </div>
+
+      <InputWrapper id="date" icon={<CalendarDots size={16} weight="duotone" />} label="Birthday">
         <input
           id="date"
-          type="text"
-          value={formattedDate}
-          readOnly
-          className="w-full p-1 text-end outline-0"
+          type="date"
+          value={dayjs(selectedDate).format('YYYY-MM-DD')}
+          min={dayjs().subtract(100, 'year').format('YYYY-MM-DD')}
+          max={dayjs().format('YYYY-MM-DD')}
+          onChange={event => {
+            if (event.target.value) setSelectedDate(dayjs(event.target.value).toDate());
+          }}
+          aria-label={`Birthday date, currently ${formattedDate}`}
+          className="w-full bg-transparent py-1 text-left text-[11px] outline-0"
         />
       </InputWrapper>
 
-      <InputWrapper id="name" label="Display Name" isFocused={focusedInput === 'name'}>
+      <InputWrapper id="name" label="Display name" isFocused={focusedInput === 'name'}>
         <input
           required={Boolean(userId)}
           disabled={isSaving || birthdayCount >= MAX_SAVED_BIRTHDAYS}
           type="text"
           id="name"
-          placeholder="Enter display name"
-          className="placeholder:text-xxs w-full p-1 text-end outline-0 placeholder:italic"
+          placeholder="Display name"
+          className="w-full bg-transparent py-1.5 text-left text-[11px] outline-0 placeholder:text-[11px] placeholder:text-primary-400 placeholder:italic"
           value={name}
           onChange={event => setName(event?.target.value)}
           onFocus={() => setFocusedInput('name')}
@@ -119,13 +130,14 @@ export default function BirthdayForm(): JSX.Element {
         />
       </InputWrapper>
 
-      <InputWrapper id="link" label="Social Media" isFocused={focusedInput === 'link'}>
+      <InputWrapper id="link" label="Profile link" isFocused={focusedInput === 'link'}>
         <input
           disabled={isSaving || birthdayCount >= MAX_SAVED_BIRTHDAYS}
           type="url"
           id="link"
-          placeholder="Enter profile link"
-          className="placeholder:text-xxs w-full p-1 text-end outline-0 placeholder:italic"
+          placeholder="Optional · https://…"
+          aria-label="Profile link (optional)"
+          className="w-full bg-transparent py-1.5 text-left text-[11px] outline-0 placeholder:text-[11px] placeholder:text-primary-400 placeholder:italic"
           value={link}
           onChange={event => setLink(event?.target.value)}
           onFocus={() => setFocusedInput('link')}
@@ -134,12 +146,12 @@ export default function BirthdayForm(): JSX.Element {
         />
       </InputWrapper>
 
-      <InputWrapper id="relation" label="Relation" isFocused={focusedInput === 'relation'}>
+      <InputWrapper id="relation" label="Relationship" isFocused={focusedInput === 'relation'}>
         <Select
           id="relation"
           required={Boolean(userId)}
           disabled={isSaving || birthdayCount >= MAX_SAVED_BIRTHDAYS}
-          placeholder="Select who to celebrate"
+          placeholder="Choose one"
           data={RELATIONS}
           allowDeselect={false}
           maxDropdownHeight={width <= 600 ? 100 : 165}
@@ -153,15 +165,20 @@ export default function BirthdayForm(): JSX.Element {
         />
       </InputWrapper>
 
-      <Checkbox
-        checked={isPublic}
-        onChange={event => setIsPublic(event.currentTarget.checked)}
-        disabled={isSaving || birthdayCount >= MAX_SAVED_BIRTHDAYS}
-        label="Share this birthday publicly"
-        description="Visible to anyone. Relationship details stay private."
-        size="xs"
-        classNames={{ label: 'text-primary-700 text-xs font-medium', description: 'text-primary-400 text-[10px]' }}
-      />
+      <div className="bg-primary-75 border-primary-200 rounded-sm border px-2 py-1.5">
+        <Checkbox
+          checked={isPublic}
+          onChange={event => setIsPublic(event.currentTarget.checked)}
+          disabled={isSaving || birthdayCount >= MAX_SAVED_BIRTHDAYS}
+          label="Share publicly"
+          description="Everyone can see it; relationship stays private."
+          size="xs"
+          classNames={{
+            label: 'text-primary-700 text-xs font-semibold',
+            description: 'text-primary-500 mt-0.5 text-[10px] leading-tight',
+          }}
+        />
+      </div>
 
       <PrimaryButton
         type="submit"
@@ -169,9 +186,11 @@ export default function BirthdayForm(): JSX.Element {
         icon={<Cake size={24} weight="duotone" />}
       >
         <span className="font-bold">{isSaving ? 'Saving…' : 'Add Birthday'}</span>
-        <span className="text-primary-500 text-xs font-medium">({birthdayCount}/{MAX_SAVED_BIRTHDAYS})</span>
+        <span className="text-primary-500 text-xs font-medium">
+          {birthdayCount}/{MAX_SAVED_BIRTHDAYS}
+        </span>
       </PrimaryButton>
-      <p role="status" aria-live="polite" className="text-primary-500 text-center text-xs">
+      <p role="status" aria-live="polite" className="text-primary-500 min-h-5 text-center text-[10px] leading-snug">
         {message || (!userId
           ? 'Sign in above to save birthdays to the shared database.'
           : birthdayCount >= MAX_SAVED_BIRTHDAYS

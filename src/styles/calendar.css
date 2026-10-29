@@ -1,5 +1,5 @@
 .mantine-DatePicker-calendarHeader {
-  color: #2c3f59; /* text-primary-900 */
+  color: var(--tt-primary-900);
 }
 
 .mantine-DatePicker-calendarHeaderLevel {
@@ -7,30 +7,35 @@
 }
 
 .mantine-DatePicker-weekday {
-  color: #9a9fa4;
+  color: var(--tt-gray-medium);
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
 }
 
 .mantine-DatePicker-day {
-  color: #374151;
+  color: var(--tt-primary-800);
   border-radius: 50%;
   margin: 1px;
 }
 
 .mantine-UnstyledButton-root:focus-visible {
-  outline-color: #99acc5; /* outline-primary-300 */
+  outline-color: var(--tt-primary-300);
 }
 
 .mantine-UnstyledButton-root:hover:where(
     :not([data-static], [data-disabled], [data-selected], [data-in-range])
   ) {
-  background-color: #e1ebf9 !important; /* bg-primary-50 */
+  background-color: var(--tt-primary-50) !important;
 }
 
 /* Selected date */
 .mantine-DatePicker-day[data-selected] {
-  background-color: #2f4f79; /* bg-primary-700 */
+  background-color: var(--tt-primary-selected);
   color: white;
+}
+
+.mantine-DatePicker-calendarHeaderControl,
+.mantine-DatePicker-calendarHeaderControl:hover {
+  color: var(--tt-primary-800);
 }

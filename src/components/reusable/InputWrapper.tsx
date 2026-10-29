@@ -14,14 +14,19 @@ export default function InputWrapper({ ...props }: InputProps): JSX.Element {
 
   return (
     <div
-      className={`border-gray-light text-gray-medium flex h-8.5 w-full items-center justify-between gap-2 rounded-sm border px-2 py-1 text-sm transition-all ${isFocused ? 'outline-primary-300 outline-1' : 'outline-0'} ${!icon && !isFocused && 'hover:shadow-primary hover:outline-primary-200 hover:outline-1'} ${className}`}
+      className={`bg-primary-75 border-primary-200 flex min-h-9 w-full items-center gap-2 rounded-sm border px-2 text-[11px] transition-colors ${
+        isFocused ? 'border-primary-400 ring-primary-100 ring-2' : 'hover:border-primary-300'
+      } ${className ?? ''}`}
     >
-      <label htmlFor={id} className="flex items-center justify-between gap-1">
-        {icon && <span>{icon}</span>}
-        <span className="text-xxs font-medium text-nowrap">{label}</span>
+      <label htmlFor={id} className="text-primary-700 flex w-24 shrink-0 items-center gap-1.5 text-[11px] font-semibold">
+        {icon && <span className="text-primary-500 flex shrink-0">{icon}</span>}
+        <span className="truncate">{label}</span>
       </label>
-
-      <div className="text-primary-800 w-full text-end font-medium">{children}</div>
+      <div
+        className="text-primary-800 min-w-0 flex-1 text-end font-medium"
+      >
+        {children}
+      </div>
     </div>
   );
 }

@@ -2,10 +2,28 @@
 @config '../../tailwind.config.ts';
 
 :root {
+  color-scheme: light;
+  --tt-primary-25: #fcfdff;
+  --tt-primary-50: #e1ebf9;
+  --tt-primary-75: #f4f7fb;
+  --tt-primary-100: #d2deee;
+  --tt-primary-150: #dce7f7;
+  --tt-primary-200: #d8e0ea;
+  --tt-primary-250: #b8c7dc;
+  --tt-primary-300: #99acc5;
+  --tt-primary-400: #7a94b7;
+  --tt-primary-500: #59769d;
+  --tt-primary-600: #43628c;
+  --tt-primary-700: #2f4f79;
+  --tt-primary-800: #0d3b76;
+  --tt-primary-900: #2c3f59;
+  --tt-primary-selected: #2f4f79;
+  --tt-gray-light: #e9e9e9;
+  --tt-gray-medium: #90969d;
+  --tt-gray-dark: #4d5a6d;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
   color: theme('colors.primary.900');
   background-color: theme('colors.primary.25');
 
@@ -19,15 +37,76 @@
   height: 100%;
 }
 
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --tt-primary-25: #101318;
+  --tt-primary-50: #171c22;
+  --tt-primary-75: #1c2229;
+  --tt-primary-100: #272f38;
+  --tt-primary-150: #2c3540;
+  --tt-primary-200: #363f49;
+  --tt-primary-250: #4a5663;
+  --tt-primary-300: #647281;
+  --tt-primary-400: #8795a3;
+  --tt-primary-500: #aab6c3;
+  --tt-primary-600: #c2ccd6;
+  --tt-primary-700: #d4dde6;
+  --tt-primary-800: #e6ebf0;
+  --tt-primary-900: #f5f7f9;
+  --tt-primary-selected: #486a87;
+  --tt-gray-light: #333d47;
+  --tt-gray-medium: #a2adb9;
+  --tt-gray-dark: #d4dde6;
+}
+
 body {
   overflow-y: scroll;
   height: 100%;
+}
+
+:root[data-theme='dark'] .bg-white {
+  background-color: var(--tt-primary-75);
+}
+
+:root[data-theme='dark'] .shadow-primary {
+  box-shadow: 1px 1px 10px 0 rgb(0 0 0 / 35%);
+}
+
+:root[data-theme='dark'] .text-red-700 {
+  color: #fca5a5;
+}
+
+::view-transition-old(root) {
+  animation: theme-fade-out 180ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: theme-fade-in 240ms ease-out both;
+}
+
+@keyframes theme-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes theme-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 1ms;
+  }
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #e1ebf9 inset !important;
-  box-shadow: 0 0 0 30px #e1ebf9 inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--tt-primary-50) inset !important;
+  box-shadow: 0 0 0 30px var(--tt-primary-50) inset !important;
 }
