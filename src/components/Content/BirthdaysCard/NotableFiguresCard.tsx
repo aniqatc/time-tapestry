@@ -54,8 +54,10 @@ export default function NotableFiguresCard(): JSX.Element {
             <ul>
             {famousBirthdays.map((user, index) => (
               <BirthdayListItem key={`${user.birthday.getFullYear()}-${user.name}-${user.link ?? index}`} user={user} index={index} type="famous">
-                <span className="bg-primary-300/50 h-[1px] w-full"></span>
-                <p className="text-primary-700 shrink-0 font-medium capitalize">{user.occupation}</p>
+                <span className="bg-primary-300/50 h-px min-w-2 flex-1"></span>
+                <p className="text-primary-700 max-w-[38%] shrink-0 break-words text-right text-xs font-medium capitalize">
+                  {user.occupation}
+                </p>
               </BirthdayListItem>
             ))}
             </ul>

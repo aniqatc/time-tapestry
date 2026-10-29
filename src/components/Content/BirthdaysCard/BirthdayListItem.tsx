@@ -25,14 +25,16 @@ export default function BirthdayListItem({ ...props }: BirthdayListItemProps): J
   const El = user.link ? 'a' : 'span';
 
   return (
-    <li className={`mb-0.5 flex items-center justify-between gap-2 ${type === 'user' && 'lowercase'}`}>
+    <li
+      className={`mb-0.5 flex justify-between gap-2 ${type === 'famous' ? 'items-start' : 'items-center'} ${type === 'user' && 'lowercase'}`}
+    >
       <El
         href={user.link}
         target={user.link ? '_blank' : undefined}
         rel={user.link ? 'noreferrer noopener' : undefined}
-        className={user.link ? 'group hover:text-primary-700 flex min-w-0 flex-1 items-center justify-between gap-2 transition-all hover:underline' : 'flex min-w-0 flex-1 items-center justify-between gap-2'}
+        className={`flex min-w-0 flex-1 justify-between gap-2 ${type === 'famous' ? 'items-start' : 'items-center'} ${user.link ? 'group hover:text-primary-700 transition-all hover:underline' : ''}`}
       >
-        <p className="shrink-0">
+        <p className={type === 'famous' ? 'min-w-0 flex-1 break-words' : 'shrink-0'}>
           <span className="font-medium transition-all group-hover:font-bold">
             {type === 'famous' ? user.name : displayName || user.name}
           </span>{' '}
