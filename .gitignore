@@ -1,3 +1,4 @@
+# Purpose: Excludes local secrets, generated files, and tool output from Git.
 # Logs
 logs
 *.log

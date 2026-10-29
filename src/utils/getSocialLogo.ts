@@ -1,3 +1,4 @@
+// Purpose: Chooses an icon based on a profile link.
 import {
   Icon,
   UserSquare,
@@ -27,7 +28,6 @@ export default function getSocialLogo(link: string): Icon {
   if (link.includes('reddit')) return RedditLogo;
   if (link.includes('codepen')) return CodepenLogo;
   if (link.includes('facebook')) return FacebookLogo;
-  if (link.includes('linkedin')) return LinkedinLogo;
   if (link.includes('dev.to')) return DevToLogo;
   if (link.includes('linktr.ee')) return LinktreeLogo;
   if (link.includes('mastodon')) return MastodonLogo;

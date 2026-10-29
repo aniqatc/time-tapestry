@@ -1,3 +1,4 @@
+// Purpose: Lets users select dates and shows birthday markers.
 import dayjs from 'dayjs';
 
 import { DatePicker, DatesProvider } from '@mantine/dates';

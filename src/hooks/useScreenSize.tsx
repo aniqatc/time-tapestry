@@ -1,3 +1,4 @@
+// Purpose: Tracks the browser viewport dimensions.
 import { useState, useEffect } from 'react';
 
 export default function useScreenSize() {

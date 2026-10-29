@@ -1,4 +1,5 @@
 #!/bin/sh
+# Purpose: Runs staged linting and formatting before commits.
 . "$(dirname "$0")/_/husky.sh"
 
 npx lint-staged

@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+// Purpose: Displays Moon phase, illumination, sign, rise, and set details.
+import { motion } from 'motion/react';
 import { LinedListItem } from '../../reusable';
 import { MOON_PHASES, MoonPhaseKey } from '../../../constants';
 import { useDateStore } from '../../../contexts';

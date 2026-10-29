@@ -1,3 +1,4 @@
+/* Purpose: Defines global theme colors, typography, and transitions. */
 @import 'tailwindcss';
 @config '../../tailwind.config.ts';
 

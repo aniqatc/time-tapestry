@@ -1,3 +1,4 @@
+// Purpose: Displays upcoming lunar phases and eclipse events.
 import { useMemo } from 'react';
 import { InnerHeading, SecondaryCard } from '../../reusable';
 import { Lightning } from '@phosphor-icons/react';
@@ -14,20 +15,22 @@ export default function AstronomyEventContent(): JSX.Element {
       {events.length ? (
         <ul className="grid gap-3 sm:auto-rows-fr sm:grid-cols-2">
           {events.map(event => (
-            <SecondaryCard key={`${event.title}-${event.date.toISOString()}`} className="h-full">
-              <li className="flex h-full flex-col gap-3">
-                <div className="flex items-start gap-3">
-                  <span className="bg-primary-100 text-primary-500 mt-0.5 rounded-full p-2">
-                    <Lightning size={16} weight="duotone" />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-primary-700 text-sm font-semibold">{event.title}</p>
-                    <p className="text-primary-400 mt-1 text-xs">{formatEventDate(event.date)}</p>
+            <li key={`${event.title}-${event.date.toISOString()}`}>
+              <SecondaryCard className="h-full">
+                <div className="flex h-full flex-col gap-3">
+                  <div className="flex items-start gap-3">
+                    <span className="bg-primary-100 text-primary-500 mt-0.5 rounded-full p-2">
+                      <Lightning size={16} weight="duotone" />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-primary-700 text-sm font-semibold">{event.title}</p>
+                      <p className="text-primary-400 mt-1 text-xs">{formatEventDate(event.date)}</p>
+                    </div>
                   </div>
+                  <p className="text-primary-500 text-sm">{event.description}</p>
                 </div>
-                <p className="text-primary-500 text-sm">{event.description}</p>
-              </li>
-            </SecondaryCard>
+              </SecondaryCard>
+            </li>
           ))}
         </ul>
       ) : (

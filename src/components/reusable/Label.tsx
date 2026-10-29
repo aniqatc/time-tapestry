@@ -1,3 +1,4 @@
+// Purpose: Renders a compact label, optionally with a year badge.
 import React from 'react';
 
 interface LabelProps {

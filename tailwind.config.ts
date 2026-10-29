@@ -1,3 +1,4 @@
+// Purpose: Configures app colors, typography, breakpoints, and animations.
 import type { Config } from 'tailwindcss';
 
 export default {

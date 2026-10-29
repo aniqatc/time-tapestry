@@ -1,3 +1,4 @@
+// Purpose: Shows account status and sign-in or sign-out actions.
 import { useAuthStore } from '../../contexts';
 import { supabaseConfigured } from '../../services/supabaseClient';
 import { SignIn } from '@phosphor-icons/react';

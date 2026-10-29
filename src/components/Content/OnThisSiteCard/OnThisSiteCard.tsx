@@ -1,3 +1,4 @@
+// Purpose: Summarizes dates covered by public community birthdays.
 import { PrimaryCard } from '../../../components/reusable';
 import { Calendar, CalendarX, UsersThree } from '@phosphor-icons/react';
 import { useBirthdayStore } from '../../../contexts';
@@ -8,10 +9,11 @@ export default function OnThisSiteCard(): JSX.Element {
   const uniqueDates = new Set(publicBirthdays.map(({ birthday }) => `${birthday.getMonth()}-${birthday.getDate()}`));
   const currentYear = new Date().getFullYear();
   const daysInYear = new Date(currentYear, 1, 29).getMonth() === 1 ? 366 : 365;
+  const formatDays = (count: number): string => `${count} ${count === 1 ? 'day' : 'days'}`;
   const data = [
     { Icon: UsersThree, stat: 'Public birthdays shared', value: `${publicBirthdays.length}` },
-    { Icon: Calendar, stat: 'Community dates covered', value: `${uniqueDates.size} days` },
-    { Icon: CalendarX, stat: 'Community dates without entries', value: `${daysInYear - uniqueDates.size} days` },
+    { Icon: Calendar, stat: 'Community dates covered', value: formatDays(uniqueDates.size) },
+    { Icon: CalendarX, stat: 'Community dates without entries', value: formatDays(daysInYear - uniqueDates.size) },
   ];
 
   return (

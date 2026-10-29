@@ -1,3 +1,4 @@
+// Purpose: Starts the React app and applies the saved theme.
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 

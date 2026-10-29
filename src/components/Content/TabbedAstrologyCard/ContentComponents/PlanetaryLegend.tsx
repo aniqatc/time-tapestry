@@ -1,5 +1,6 @@
+// Purpose: Lists planets with zodiac placements and chart highlights.
 import { Dispatch, SetStateAction } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { PlanetaryPositionData } from '../../../../types';
 import { getZodiacIcon } from '../../../../utils';
 import { IconType } from 'react-icons';
@@ -40,14 +41,14 @@ export default function PlanetaryLegend({ ...props }: PlanetaryLegendProps): JSX
                 />
               </span>
             )}
-            <span className={hoveredPlanet === planet.name ? 'text-primary-800' : 'text-primary-500'}>
+            <div className={hoveredPlanet === planet.name ? 'text-primary-800' : 'text-primary-500'}>
               <p className={`text-base leading-5 ${hoveredPlanet === planet.name ? 'font-semibold' : 'font-normal'}`}>
                 {planet.name}
               </p>
               <p className="text-xs">
                 {planet.sign} <span className="text-xs font-semibold">{planet.degree}°</span>
               </p>
-            </span>
+            </div>
           </motion.li>
         );
       })}

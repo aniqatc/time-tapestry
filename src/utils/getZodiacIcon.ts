@@ -1,3 +1,4 @@
+// Purpose: Maps zodiac sign names to icons.
 import {
   TbZodiacAquarius,
   TbZodiacAries,

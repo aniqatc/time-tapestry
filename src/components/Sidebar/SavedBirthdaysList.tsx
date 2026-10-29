@@ -1,3 +1,4 @@
+// Purpose: Lists and removes birthdays owned by the signed-in user.
 import { useState } from 'react';
 import { LockKey, LockKeyOpen, Trash } from '@phosphor-icons/react';
 import dayjs from 'dayjs';
@@ -39,7 +40,7 @@ export default function SavedBirthdaysList(): JSX.Element | null {
         <p className="text-primary-500 text-[11px]">Loading your birthdays…</p>
       ) : error ? (
         <p role="status" className="text-primary-500 text-[11px] leading-snug">
-          Couldn’t load saved birthdays: {error}
+          {error}
         </p>
       ) : savedBirthdays.length === 0 ? (
         <p className="text-primary-500 text-[11px]">No birthdays saved yet.</p>

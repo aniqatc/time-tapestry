@@ -1,3 +1,4 @@
+// Purpose: Stores authentication state and sign-in actions.
 import { create } from 'zustand';
 import type { Session } from '@supabase/supabase-js';
 import { supabase } from '../services/supabaseClient';
@@ -34,6 +35,8 @@ export const useAuthStore = create<AuthState>(set => ({
     void supabase.auth.getSession().then(({ data: sessionData, error }) => {
       if (!active) return;
       set({ session: sessionData.session, initialized: true, error: error?.message ?? null });
+    }).catch(() => {
+      if (active) set({ initialized: true, error: 'Could not check your sign-in status.' });
     });
 
     return () => {
@@ -44,18 +47,27 @@ export const useAuthStore = create<AuthState>(set => ({
   sendSignInLink: async email => {
     if (!supabase) return false;
     set({ error: null });
-    const { error } = await supabase.auth.signInWithOtp({ email: email.trim() });
-    if (error) {
-      set({ error: error.message });
+    try {
+      const { error } = await supabase.auth.signInWithOtp({ email: email.trim() });
+      if (error) {
+        set({ error: error.message });
+        return false;
+      }
+      return true;
+    } catch {
+      set({ error: 'Could not send the sign-in link. Check your connection and try again.' });
       return false;
     }
-    return true;
   },
   signOut: async () => {
     if (!supabase) return;
-    const { error } = await supabase.auth.signOut();
-    if (error) set({ error: error.message });
-    else set({ session: null, error: null });
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) set({ error: error.message });
+      else set({ session: null, error: null });
+    } catch {
+      set({ error: 'Could not sign out. Check your connection and try again.' });
+    }
   },
 }));
 

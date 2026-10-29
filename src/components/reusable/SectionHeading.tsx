@@ -1,3 +1,4 @@
+// Purpose: Renders a heading above a primary card.
 import React from 'react';
 
 interface SectionHeadingProps {

@@ -1,3 +1,4 @@
+<!-- Purpose: Illustrates the waning-crescent Moon phase. -->
 <svg width="70" height="71" viewBox="0 0 70 71" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M35.135 70.034C54.3584 70.034 69.942 54.4504 69.942 35.227C69.942 16.0036 54.3584 0.420013 35.135 0.420013C15.9116 0.420013 0.328003 16.0036 0.328003 35.227C0.328003 54.4504 15.9116 70.034 35.135 70.034Z" fill="#D8E0EA"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.064 7.59C17.051 7.597 17.041 7.60801 17.043 7.62701C17.066 7.64801 17.074 7.619 17.064 7.59Z" fill="#F5F5F5"/>

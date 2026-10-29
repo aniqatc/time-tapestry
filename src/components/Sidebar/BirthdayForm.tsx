@@ -1,3 +1,4 @@
+// Purpose: Validates and saves a birthday to the signed-in account.
 import { FormEvent, useState } from 'react';
 import { Checkbox, Select } from '@mantine/core';
 import { Cake, CalendarDots } from '@phosphor-icons/react';

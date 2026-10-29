@@ -1,3 +1,4 @@
+// Purpose: Stores and persists the selected color theme.
 import { create } from 'zustand';
 
 export type ThemeMode = 'light' | 'dark';

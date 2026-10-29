@@ -1,3 +1,4 @@
+// Purpose: Provides navigation between the astrology panels.
 import { useState } from 'react';
 import { PrimaryCard } from '../../../components/reusable';
 import { TABS } from '../../../constants';

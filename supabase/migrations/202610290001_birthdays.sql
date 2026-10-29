@@ -1,3 +1,4 @@
+-- Purpose: Creates birthday tables, access policies, and the save procedure.
 create table if not exists public.birthdays (
   id uuid primary key default gen_random_uuid(),
   owner_id uuid not null references auth.users (id) on delete cascade,

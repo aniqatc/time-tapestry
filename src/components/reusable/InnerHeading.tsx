@@ -1,3 +1,4 @@
+// Purpose: Renders a compact heading inside a card.
 interface InnerHeadingProps {
   className?: string;
   title: string;

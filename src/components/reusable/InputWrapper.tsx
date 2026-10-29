@@ -1,3 +1,4 @@
+// Purpose: Styles a labeled input row for the birthday form.
 import React from 'react';
 
 interface InputProps {

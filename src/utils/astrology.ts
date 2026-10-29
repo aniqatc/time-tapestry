@@ -1,3 +1,4 @@
+// Purpose: Calculates Moon, planet, zodiac, and astronomy event data.
 import {
   Body,
   EclipseKind,
@@ -30,6 +31,8 @@ const PLANETS: { body: Body; name: string; color: string; magnitude: number }[] 
   { body: Body.Saturn, name: 'Saturn', color: '#C16718', magnitude: 0.51 },
 ];
 
+const NEW_YORK_TIME_ZONE = 'America/New_York';
+
 export const dateAtUtcNoon = (date: Date): Date =>
   new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12));
 
@@ -41,13 +44,40 @@ export const zodiacAtLongitude = (longitude: number): { sign: string; degree: nu
 
 const geocentricLongitude = (body: Body, date: Date): number => Ecliptic(GeoVector(body, date, true)).elon;
 
+const dateAtNewYorkMidnight = (date: Date): Date => {
+  const utcMidnight = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const localParts = new Intl.DateTimeFormat('en-US', {
+    timeZone: NEW_YORK_TIME_ZONE,
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hourCycle: 'h23',
+  }).formatToParts(utcMidnight);
+  const part = (type: Intl.DateTimeFormatPartTypes): number =>
+    Number(localParts.find(item => item.type === type)?.value ?? 0);
+  const localTimeAsUtc = Date.UTC(part('year'), part('month') - 1, part('day'), part('hour'), part('minute'));
+  return new Date(utcMidnight.getTime() - (localTimeAsUtc - utcMidnight.getTime()));
+};
+
+const dateKeyInNewYork = (date: Date): string => {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: NEW_YORK_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(date);
+  return ['year', 'month', 'day'].map(type => parts.find(part => part.type === type)?.value).join('-');
+};
+
 export const moonPhaseName = (phase: number): string => {
   const names = ['New Moon', 'Waxing Crescent', 'First Quarter', 'Waxing Gibbous', 'Full Moon', 'Waning Gibbous', 'Last Quarter', 'Waning Crescent'];
   return names[Math.floor((((phase + 22.5) % 360) + 360) % 360 / 45)];
 };
 
 const clockTime = (date: Date | null): string => date
-  ? new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }).format(date)
+  ? new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', timeZone: NEW_YORK_TIME_ZONE }).format(date)
   : '—';
 
 export function getMoonDetails(date: Date) {
@@ -55,9 +85,12 @@ export function getMoonDetails(date: Date) {
   const phase = MoonPhase(at);
   const illumination = Illumination(Body.Moon, at).phase_fraction;
   const observer = new Observer(40.7128, -74.006, 0);
-  const start = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const start = dateAtNewYorkMidnight(date);
   const rise = SearchRiseSet(Body.Moon, observer, 1, start, 1);
   const set = SearchRiseSet(Body.Moon, observer, -1, start, 1);
+  const selectedDateKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  const riseOnSelectedDate = rise?.date && dateKeyInNewYork(rise.date) === selectedDateKey ? rise.date : null;
+  const setOnSelectedDate = set?.date && dateKeyInNewYork(set.date) === selectedDateKey ? set.date : null;
   const moonSign = zodiacAtLongitude(geocentricLongitude(Body.Moon, at)).sign;
   const name = moonPhaseName(phase);
   return {
@@ -66,8 +99,8 @@ export function getMoonDetails(date: Date) {
       { label: 'Phase', value: name },
       { label: 'Illumination', value: `${Math.round(illumination * 100)}%` },
       { label: 'Moon sign', value: moonSign },
-      { label: 'Moonrise', value: clockTime(rise?.date ?? null) },
-      { label: 'Moonset', value: clockTime(set?.date ?? null) },
+      { label: 'Moonrise', value: clockTime(riseOnSelectedDate) },
+      { label: 'Moonset', value: clockTime(setOnSelectedDate) },
     ],
   };
 }

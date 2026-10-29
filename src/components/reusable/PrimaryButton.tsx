@@ -1,3 +1,4 @@
+// Purpose: Renders the shared primary action button.
 import React from 'react';
 
 interface ButtonProps {

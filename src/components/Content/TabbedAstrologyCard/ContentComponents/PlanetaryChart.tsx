@@ -1,5 +1,6 @@
+// Purpose: Draws the zodiac wheel and planetary positions.
 import { Dispatch, SetStateAction } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { PlanetaryPositionData } from '../../../../types';
 
 interface PlanetaryChartProps {

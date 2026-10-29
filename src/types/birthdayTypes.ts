@@ -1,3 +1,4 @@
+// Purpose: Defines birthday data shapes.
 import { RELATIONS } from '../constants';
 
 interface Birthday {

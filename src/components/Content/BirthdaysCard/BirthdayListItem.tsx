@@ -1,3 +1,4 @@
+// Purpose: Renders one saved or notable birthday row.
 import React from 'react';
 import { FamousBirthday } from '../../../types';
 import { SavedBirthday } from '../../../contexts';
@@ -27,7 +28,8 @@ export default function BirthdayListItem({ ...props }: BirthdayListItemProps): J
     <li className={`mb-0.5 flex items-center justify-between gap-2 ${type === 'user' && 'lowercase'}`}>
       <El
         href={user.link}
-        target="_blank"
+        target={user.link ? '_blank' : undefined}
+        rel={user.link ? 'noreferrer noopener' : undefined}
         className={user.link ? 'group hover:text-primary-700 flex min-w-0 flex-1 items-center justify-between gap-2 transition-all hover:underline' : 'flex min-w-0 flex-1 items-center justify-between gap-2'}
       >
         <p className="shrink-0">

@@ -1,3 +1,4 @@
+// Purpose: Composes the page and initializes authentication and birthday data.
 import { Header, Sidebar, Content } from './components';
 import { useEffect } from 'react';
 import { useAuthStore, useBirthdayStore } from './contexts';

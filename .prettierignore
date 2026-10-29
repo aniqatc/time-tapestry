@@ -1,3 +1,4 @@
+# Purpose: Excludes generated files from formatting.
 node_modules/
 dist/
 .cache

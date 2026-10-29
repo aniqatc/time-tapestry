@@ -1,3 +1,4 @@
+<!-- Purpose: Provides the vector source for the app icon. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
   <rect x="1" y="1" width="46" height="46" rx="15" fill="#e8eef8"/>
   <rect x="9" y="11" width="30" height="28" rx="6" fill="#f9fbff" stroke="#9aafcc" stroke-width="1.5"/>

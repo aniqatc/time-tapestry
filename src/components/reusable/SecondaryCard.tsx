@@ -1,3 +1,4 @@
+// Purpose: Renders a smaller themed card or external link.
 import React from 'react';
 
 interface SecondaryCardProps {

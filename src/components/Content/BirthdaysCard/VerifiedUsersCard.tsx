@@ -1,3 +1,4 @@
+// Purpose: Displays saved and community birthdays for the selected date.
 import { PrimaryCard, Label } from '../../../components/reusable';
 import { useAuthStore, useBirthdayStore, useDateStore } from '../../../contexts';
 import { getSocialLogo } from '../../../utils';
@@ -12,7 +13,9 @@ export default function VerifiedUsersCard(): JSX.Element {
   const removeBirthday = useBirthdayStore(state => state.removeBirthday);
   const userId = useAuthStore(state => state.session?.user.id ?? null);
   const matchesDate = (user: { birthday: Date }): boolean =>
-    user.birthday.getMonth() === selectedDate.getMonth() && user.birthday.getDate() === selectedDate.getDate();
+    user.birthday.getMonth() === selectedDate.getMonth() &&
+    user.birthday.getDate() === selectedDate.getDate() &&
+    user.birthday.getFullYear() <= selectedDate.getFullYear();
   const matchingSaved = userId
     ? birthdays.filter(user => user.ownerId === userId && matchesDate(user))
     : [];

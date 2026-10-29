@@ -1,3 +1,5 @@
+// Purpose: Renders the brand, account control, and theme toggle.
+import Heading from '../reusable/Heading';
 import ThemeToggle from './ThemeToggle';
 import AuthControl from './AuthControl';
 
@@ -20,10 +22,12 @@ export default function Header({ className = '' }: HeaderProps): JSX.Element {
           <path d="M17 23v10m7-8v8m7-10v10" stroke="#d4a85d" strokeWidth="1.5" strokeLinecap="round" />
           <circle cx="34" cy="32" r="3.5" fill="#526f98" stroke="#f9fbff" strokeWidth="1.5" />
         </svg>
-        <span className="flex flex-col leading-none">
-          <span className="text-primary-500 text-[9px] font-semibold tracking-[0.2em] uppercase">Time</span>
-          <span className="text-primary-900 text-xl font-bold tracking-tight">Tapestry</span>
-        </span>
+        <Heading className="leading-none">
+          <span className="flex flex-col">
+            <span className="text-primary-500 text-[9px] font-semibold tracking-[0.2em] uppercase">Time</span>
+            <span className="text-primary-900 text-xl font-bold tracking-tight">Tapestry</span>
+          </span>
+        </Heading>
       </a>
       <div className="flex items-center gap-3">
         <AuthControl />

@@ -1,3 +1,4 @@
+// Purpose: Loads and manages private and community birthday records.
 import { create } from 'zustand';
 import dayjs from 'dayjs';
 import { UserBirthday } from '../types';
@@ -26,6 +27,7 @@ interface BirthdayState {
 }
 
 export const MAX_SAVED_BIRTHDAYS = 5;
+let loadRequestId = 0;
 
 interface BirthdayRow {
   id: string;
@@ -53,60 +55,70 @@ export const useBirthdayStore = create<BirthdayState>(set => ({
   loading: false,
   error: null,
   loadBirthdays: async userId => {
-    if (!supabase) {
-      set({ birthdays: [], loading: false, error: 'Connect a Supabase project to load shared birthdays.' });
-      return;
-    }
-    set({ loading: true, error: null });
-    if (userId) {
-      const [owned, community] = await Promise.all([
-        supabase
-          .from('birthdays')
-          .select('id, owner_id, display_name, birthday, profile_url, visibility')
-          .eq('owner_id', userId),
-        supabase
-          .from('community_birthdays')
-          .select('id, display_name, birthday, profile_url, visibility'),
-      ]);
-      const error = owned.error ?? community.error;
-      if (error) {
-        set({ loading: false, error: error.message });
-        return;
-      }
-      const ownedRows = (owned.data ?? []) as BirthdayRow[];
-      const privateDetails = ownedRows.length
-        ? await supabase
-            .from('birthday_private_details')
-            .select('birthday_id, relation')
-            .in('birthday_id', ownedRows.map(row => row.id))
-        : { data: [], error: null };
-      if (privateDetails.error) {
-        set({ loading: false, error: privateDetails.error.message });
-        return;
-      }
-      const relationById = new Map(
-        (privateDetails.data ?? []).map(item => [item.birthday_id, item.relation as UserBirthday['relation']])
-      );
-      const ownedIds = new Set(ownedRows.map(row => row.id));
-      const birthdays = [
-        ...ownedRows.map(row => fromRow(row, relationById.get(row.id))),
-        ...((community.data ?? []) as BirthdayRow[])
-          .filter(row => !ownedIds.has(row.id))
-          .map(row => fromRow(row)),
-      ].sort((a, b) => a.birthday.getTime() - b.birthday.getTime());
-      set({ birthdays, loading: false, error: null });
-      return;
-    }
+    const requestId = ++loadRequestId;
+    const updateIfCurrent = (state: Partial<BirthdayState>): void => {
+      if (requestId === loadRequestId) set(state);
+    };
 
-    const { data, error } = await supabase
-      .from('community_birthdays')
-      .select('id, display_name, birthday, profile_url, visibility')
-      .order('birthday');
-    if (error) {
-      set({ loading: false, error: error.message });
+    if (!supabase) {
+      updateIfCurrent({ birthdays: [], loading: false, error: 'Connect a Supabase project to load shared birthdays.' });
       return;
     }
-    set({ birthdays: ((data ?? []) as BirthdayRow[]).map(row => fromRow(row)), loading: false, error: null });
+    updateIfCurrent({ loading: true, error: null });
+    try {
+      let birthdays: SavedBirthday[];
+      if (userId) {
+        const [owned, community] = await Promise.all([
+          supabase
+            .from('birthdays')
+            .select('id, owner_id, display_name, birthday, profile_url, visibility')
+            .eq('owner_id', userId),
+          supabase
+            .from('community_birthdays')
+            .select('id, display_name, birthday, profile_url, visibility'),
+        ]);
+        if (owned.error) throw owned.error;
+        if (community.error) throw community.error;
+
+        const ownedRows = (owned.data ?? []) as BirthdayRow[];
+        const privateDetails = ownedRows.length
+          ? await supabase
+              .from('birthday_private_details')
+              .select('birthday_id, relation')
+              .in('birthday_id', ownedRows.map(row => row.id))
+          : { data: [], error: null };
+        if (privateDetails.error) throw privateDetails.error;
+
+        const relationById = new Map(
+          (privateDetails.data ?? []).map(item => [item.birthday_id, item.relation as UserBirthday['relation']])
+        );
+        const ownedIds = new Set(ownedRows.map(row => row.id));
+        birthdays = [
+          ...ownedRows.map(row => fromRow(row, relationById.get(row.id))),
+          ...((community.data ?? []) as BirthdayRow[])
+            .filter(row => !ownedIds.has(row.id))
+            .map(row => fromRow(row)),
+        ];
+      } else {
+        const { data, error } = await supabase
+          .from('community_birthdays')
+          .select('id, display_name, birthday, profile_url, visibility')
+          .order('birthday');
+        if (error) throw error;
+        birthdays = ((data ?? []) as BirthdayRow[]).map(row => fromRow(row));
+      }
+
+      updateIfCurrent({
+        birthdays: birthdays.sort((a, b) => a.birthday.getTime() - b.birthday.getTime()),
+        loading: false,
+        error: null,
+      });
+    } catch (error) {
+      updateIfCurrent({
+        loading: false,
+        error: error instanceof Error ? error.message : 'Could not load birthdays. Try again.',
+      });
+    }
   },
   addBirthday: async (birthday, ownerId) => {
     if (!supabase) return 'Connect a Supabase project before adding a birthday.';
@@ -124,12 +136,23 @@ export const useBirthdayStore = create<BirthdayState>(set => ({
   },
   removeBirthday: async id => {
     if (!supabase) return 'Connect a Supabase project before removing a birthday.';
-    const { error } = await supabase.from('birthdays').delete().eq('id', id);
-    if (error) {
-      set({ error: error.message });
-      return error.message;
+    try {
+      const { error } = await supabase.from('birthdays').delete().eq('id', id);
+      if (error) {
+        set({ error: error.message });
+        return error.message;
+      }
+      loadRequestId += 1;
+      set(state => ({
+        birthdays: state.birthdays.filter(birthday => birthday.id !== id),
+        loading: false,
+        error: null,
+      }));
+      return null;
+    } catch {
+      const message = 'Could not remove this birthday. Check your connection and try again.';
+      set({ error: message });
+      return message;
     }
-    set(state => ({ birthdays: state.birthdays.filter(birthday => birthday.id !== id), error: null }));
-    return null;
   },
 }));

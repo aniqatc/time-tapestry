@@ -1,3 +1,4 @@
+<!-- Purpose: Illustrates the full Moon phase. -->
 <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M34.807 69.614C54.0304 69.614 69.614 54.0304 69.614 34.807C69.614 15.5836 54.0304 0 34.807 0C15.5836 0 0 15.5836 0 34.807C0 54.0304 15.5836 69.614 34.807 69.614Z" fill="#D8E0EA"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.735 7.17C16.722 7.177 16.712 7.188 16.714 7.207C16.737 7.228 16.745 7.199 16.735 7.17Z" fill="#F5F5F5"/>

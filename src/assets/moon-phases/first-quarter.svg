@@ -1,3 +1,4 @@
+<!-- Purpose: Illustrates the first-quarter Moon phase. -->
 <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M35.023 69.718C54.2464 69.718 69.83 54.1344 69.83 34.911C69.83 15.6876 54.2464 0.104004 35.023 0.104004C15.7996 0.104004 0.216003 15.6876 0.216003 34.911C0.216003 54.1344 15.7996 69.718 35.023 69.718Z" fill="#DFE0E2"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.951 7.274C16.938 7.281 16.928 7.292 16.93 7.311C16.953 7.332 16.961 7.304 16.951 7.274Z" fill="#F5F5F5"/>

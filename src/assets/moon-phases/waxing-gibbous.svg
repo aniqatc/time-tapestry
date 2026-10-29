@@ -1,3 +1,4 @@
+<!-- Purpose: Illustrates the waxing-gibbous Moon phase. -->
 <svg width="70" height="71" viewBox="0 0 70 71" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M34.91 70.56C54.1334 70.56 69.717 54.9764 69.717 35.753C69.717 16.5296 54.1334 0.945984 34.91 0.945984C15.6867 0.945984 0.103027 16.5296 0.103027 35.753C0.103027 54.9764 15.6867 70.56 34.91 70.56Z" fill="#DFE0E2"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.839 8.11597C17.826 8.12297 17.8161 8.13398 17.8181 8.15298C17.8411 8.17398 17.849 8.14497 17.839 8.11597Z" fill="#F5F5F5"/>

@@ -1,3 +1,4 @@
+// Purpose: Builds the planetary chart and legend for the selected date.
 import { useState } from 'react';
 import PlanetaryChart from './ContentComponents/PlanetaryChart';
 import PlanetaryLegend from './ContentComponents/PlanetaryLegend';

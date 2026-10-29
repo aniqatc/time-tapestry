@@ -1,3 +1,4 @@
+/* Purpose: Styles the calendar to match the app theme. */
 .mantine-DatePicker-calendarHeader {
   color: var(--tt-primary-900);
 }

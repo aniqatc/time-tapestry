@@ -1,3 +1,4 @@
+// Purpose: Lists relationship choices for saved birthdays.
 export const RELATIONS = [
   'Self (Male)',
   'Self (Female)',

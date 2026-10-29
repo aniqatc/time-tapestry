@@ -1,3 +1,4 @@
+// Purpose: Displays tropical and Chinese zodiac details for the selected date.
 import { Atom, Heart, Planet, Scales } from '@phosphor-icons/react';
 import { InnerHeading, LinedListItem, SecondaryCard } from '../../reusable';
 import { useDateStore } from '../../../contexts';

@@ -1,3 +1,4 @@
+// Purpose: Exports state stores and their public types.
 export { useDateStore } from './dateStore';
 export type { DateState } from './dateStore';
 export { useBirthdayStore, MAX_SAVED_BIRTHDAYS } from './birthdayStore';

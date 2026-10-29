@@ -1,3 +1,4 @@
+// Purpose: Configures Vite and the installable PWA manifest.
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';

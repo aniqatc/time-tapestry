@@ -1,3 +1,4 @@
+// Purpose: Defines the labels, icons, and content for astrology tabs.
 import React from 'react';
 import { Icon, Planet, MoonStars, Star, Flag } from '@phosphor-icons/react';
 import PlanetContent from '../components/Content/TabbedAstrologyCard/PlanetContent';

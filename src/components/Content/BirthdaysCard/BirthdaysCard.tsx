@@ -1,3 +1,4 @@
+// Purpose: Combines the personal and notable birthday cards.
 import VerifiedUsersCard from './VerifiedUsersCard';
 import NotableFiguresCard from './NotableFiguresCard';
 

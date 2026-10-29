@@ -1,3 +1,4 @@
+<!-- Purpose: Illustrates the waxing-crescent Moon phase. -->
 <svg width="70" height="71" viewBox="0 0 70 71" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M35.135 70.56C54.3584 70.56 69.942 54.9764 69.942 35.753C69.942 16.5296 54.3584 0.945984 35.135 0.945984C15.9116 0.945984 0.328003 16.5296 0.328003 35.753C0.328003 54.9764 15.9116 70.56 35.135 70.56Z" fill="#D8E0EA"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.064 8.11597C17.051 8.12297 17.041 8.13398 17.043 8.15298C17.066 8.17398 17.074 8.14497 17.064 8.11597Z" fill="#F5F5F5"/>

@@ -1,3 +1,4 @@
+// Purpose: Maps Moon phases to their illustration assets.
 import FirstQuarter from '../assets/moon-phases/first-quarter.svg';
 import FullMoon from '../assets/moon-phases/full-moon.svg';
 import LastQuarter from '../assets/moon-phases/last-quarter.svg';

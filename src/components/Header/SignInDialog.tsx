@@ -1,3 +1,4 @@
+// Purpose: Requests a secure email sign-in link.
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { X } from '@phosphor-icons/react';
 import { useAuthStore } from '../../contexts';

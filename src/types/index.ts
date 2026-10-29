@@ -1,3 +1,4 @@
+// Purpose: Re-exports app data types.
 export * from './birthdayTypes';
 export * from './eventTypes';
 export * from './generalTypes';

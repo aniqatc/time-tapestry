@@ -1,5 +1,6 @@
+// Purpose: Renders a themed card with an optional heading.
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { SectionHeading } from '.';
 import { useDateStore } from '../../contexts';
 

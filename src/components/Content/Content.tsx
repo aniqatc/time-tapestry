@@ -1,3 +1,4 @@
+// Purpose: Arranges the main birthday, history, astronomy, and stats sections.
 import OnThisSiteCard from './OnThisSiteCard/OnThisSiteCard';
 import BirthdaysCard from './BirthdaysCard/BirthdaysCard';
 import NotableEventsCard from './NotableEventsCard/NotableEventsCard';

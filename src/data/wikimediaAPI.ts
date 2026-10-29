@@ -1,37 +1,49 @@
+// Purpose: Fetches notable events and birthdays from Wikimedia.
 import { NotableEvent } from '../types';
 import { FamousBirthday } from '../types';
+
+interface WikimediaPage {
+  extract?: string;
+  content_urls?: { desktop?: { page?: string } };
+}
+
+interface WikimediaEntry {
+  year: number;
+  text: string;
+  pages?: WikimediaPage[];
+  deaths?: unknown;
+}
+
+interface WikimediaResponse {
+  events?: WikimediaEntry[];
+  births?: WikimediaEntry[];
+}
 
 const API_URL = 'https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday';
 
 export async function fetchEventsFromWikimedia(day: number, month: number): Promise<NotableEvent[]> {
-  try {
-    const url = `${API_URL}/events/${month + 1}/${day}`;
-    const response = await fetch(url);
-    const data = await response.json();
-
-    const filteredEvents = data.events.map(event => ({
+  const response = await fetch(`${API_URL}/events/${month + 1}/${day}`);
+  if (!response.ok) throw new Error(`Wikimedia returned ${response.status}.`);
+  const data = (await response.json()) as WikimediaResponse;
+  const events = (data.events ?? [])
+    .map(event => ({
       day,
       month,
       year: event.year,
       description: event.text,
       source: event.pages?.[0]?.content_urls?.desktop?.page,
-      pageCount: event.pages?.length,
-    }));
+      pageCount: event.pages?.length ?? 0,
+    }))
+    .filter((event): event is NotableEvent => Boolean(event.source));
 
-    return filteredEvents.sort((a, b) => b.pageCount - a.pageCount).slice(0, 3);
-  } catch {
-    console.log('Error fetching data from the Wikimedia API. Please try again later.');
-    return [];
-  }
+  return events.sort((a, b) => (b.pageCount ?? 0) - (a.pageCount ?? 0)).slice(0, 3);
 }
 
 export async function fetchBirthdaysFromWikimedia(day: number, month: number): Promise<FamousBirthday[]> {
-  try {
-    const url = `${API_URL}/births/${month + 1}/${day}`;
-    const response = await fetch(url);
-    const data = await response.json();
-
-    const livingPeople = data.births.filter(person => {
+  const response = await fetch(`${API_URL}/births/${month + 1}/${day}`);
+  if (!response.ok) throw new Error(`Wikimedia returned ${response.status}.`);
+  const data = (await response.json()) as WikimediaResponse;
+  const livingPeople = (data.births ?? []).filter(person => {
       const noDeathInfoAvailable = !person.deaths;
       const birthAfter1920 = person.year > 1920;
       const textHasNoDeathMention =
@@ -45,35 +57,31 @@ export async function fetchBirthdaysFromWikimedia(day: number, month: number): P
 
       const tensesForText = person.text.includes(' is ') || !person.text.includes(' was ');
       return noDeathInfoAvailable && birthAfter1920 && textHasNoDeathMention && tensesForText;
-    });
+  });
 
-    const filteredBirthdays = livingPeople.map(person => {
-      const name = person.text.split(',')[0]?.split('-')[0];
-      const occupation =
-        person?.text
-          .split(',')[1]
-          ?.split('and')[0]
-          ?.split('(')[0]
-          ?.split(' known as ')[0]
-          ?.split('for')[0]
-          ?.split(';')[0]
-          ?.trim()
-          ?.split('of')[0]
-          ?.split(' ')[1]
-          ?.split('-')[0] || '';
+  const filteredBirthdays = livingPeople.map(person => {
+    const name = person.text.split(',')[0]?.split('-')[0] ?? 'Unknown';
+    const occupation =
+      person.text
+        .split(',')[1]
+        ?.split('and')[0]
+        ?.split('(')[0]
+        ?.split(' known as ')[0]
+        ?.split('for')[0]
+        ?.split(';')[0]
+        ?.trim()
+        ?.split('of')[0]
+        ?.split(' ')[1]
+        ?.split('-')[0] || '';
 
-      return {
-        birthday: new Date(person.year, month, day),
-        name: `${name.split(' ')[0]} ${name.split(' ')[1] || ''}`,
-        pageCount: person.pages?.length,
-        link: person.pages?.[0]?.content_urls?.desktop?.page,
-        occupation: occupation.length > 4 ? occupation : '',
-      };
-    });
+    return {
+      birthday: new Date(person.year, month, day),
+      name: `${name.split(' ')[0]} ${name.split(' ')[1] || ''}`.trim(),
+      pageCount: person.pages?.length ?? 0,
+      link: person.pages?.[0]?.content_urls?.desktop?.page,
+      occupation: occupation.length > 4 ? occupation : '',
+    };
+  });
 
-    return filteredBirthdays.sort((a, b) => b.pageCount - a.pageCount).slice(0, 5);
-  } catch {
-    console.log('Error fetching data from the Wikimedia API. Please try again later.');
-    return [];
-  }
+  return filteredBirthdays.sort((a, b) => (b.pageCount ?? 0) - (a.pageCount ?? 0)).slice(0, 5);
 }

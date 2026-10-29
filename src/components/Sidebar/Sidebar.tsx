@@ -1,6 +1,7 @@
+// Purpose: Combines the calendar and birthday management controls.
 import { useState, useEffect } from 'react';
 import { Cake } from '@phosphor-icons/react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Calendar from './Calendar';
 import BirthdayForm from './BirthdayForm';
 import SavedBirthdaysList from './SavedBirthdaysList';

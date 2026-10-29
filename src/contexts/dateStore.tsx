@@ -1,3 +1,4 @@
+// Purpose: Stores the selected date and its formatted labels.
 import { create } from 'zustand';
 import dayjs from 'dayjs';
 

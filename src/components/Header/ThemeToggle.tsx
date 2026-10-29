@@ -1,3 +1,4 @@
+// Purpose: Switches between the light and dark themes.
 import { Moon, Sun } from '@phosphor-icons/react';
 import { useThemeStore } from '../../contexts';
 

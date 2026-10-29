@@ -1,3 +1,4 @@
+// Purpose: Renders a label and value separated by a rule.
 import React from 'react';
 import { Icon } from '@phosphor-icons/react';
 

@@ -1,3 +1,4 @@
+// Purpose: Renders one linked historical event.
 import { Label } from '../../../components/reusable';
 import { ArrowUpRight } from '@phosphor-icons/react';
 import React from 'react';

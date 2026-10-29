@@ -1,3 +1,4 @@
+// Purpose: Connects the app and tooling TypeScript configurations.
 {
   "files": [],
   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]

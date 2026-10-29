@@ -1,3 +1,4 @@
+// Purpose: Creates the Supabase client from public environment settings.
 import { createClient } from '@supabase/supabase-js';
 
 const url = import.meta.env.VITE_SUPABASE_URL;
