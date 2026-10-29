@@ -12,7 +12,6 @@ import '../../styles/select.css';
 export default function BirthdayForm(): JSX.Element {
   const formattedDate = useDateStore((state: { formattedDate: string }) => state.formattedDate);
   const selectedDate = useDateStore((state: { selectedDate: Date }) => state.selectedDate);
-  const setSelectedDate = useDateStore(state => state.setSelectedDate);
   const addBirthday = useBirthdayStore(state => state.addBirthday);
   const refreshBirthdays = useBirthdayStore(state => state.loadBirthdays);
   const birthdays = useBirthdayStore(state => state.birthdays);
@@ -96,21 +95,17 @@ export default function BirthdayForm(): JSX.Element {
     >
       <div className="flex items-center justify-between gap-2">
         <h3 className="text-primary-800 text-sm font-semibold">Add a birthday</h3>
-        <p className="text-primary-500 text-[10px]">Private by default</p>
+        <p className="text-primary-500 text-[10px]">{birthdayCount} of {MAX_SAVED_BIRTHDAYS} saved</p>
       </div>
 
       <InputWrapper id="date" icon={<CalendarDots size={16} weight="duotone" />} label="Birthday">
         <input
           id="date"
-          type="date"
-          value={dayjs(selectedDate).format('YYYY-MM-DD')}
-          min={dayjs().subtract(100, 'year').format('YYYY-MM-DD')}
-          max={dayjs().format('YYYY-MM-DD')}
-          onChange={event => {
-            if (event.target.value) setSelectedDate(dayjs(event.target.value).toDate());
-          }}
+          type="text"
+          value={formattedDate}
+          readOnly
           aria-label={`Birthday date, currently ${formattedDate}`}
-          className="w-full bg-transparent py-1 text-left text-[11px] outline-0"
+          className="w-full cursor-default bg-transparent py-1 text-left text-[11px] outline-0"
         />
       </InputWrapper>
 
@@ -183,11 +178,12 @@ export default function BirthdayForm(): JSX.Element {
       <PrimaryButton
         type="submit"
         disabled={isSaving}
-        icon={<Cake size={24} weight="duotone" />}
+        icon={<Cake size={20} weight="duotone" />}
+        textClassName="text-xs"
+        className={!userId ? 'bg-primary-150 border-primary-300 hover:bg-primary-200' : ''}
       >
-        <span className="font-bold">{isSaving ? 'Saving…' : 'Add Birthday'}</span>
-        <span className="text-primary-500 text-xs font-medium">
-          {birthdayCount}/{MAX_SAVED_BIRTHDAYS}
+        <span className="font-bold">
+          {isSaving ? 'Saving…' : userId ? 'Add Birthday' : 'Sign in to add a birthday'}
         </span>
       </PrimaryButton>
       <p role="status" aria-live="polite" className="text-primary-500 min-h-5 text-center text-[10px] leading-snug">

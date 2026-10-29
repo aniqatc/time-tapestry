@@ -1,5 +1,6 @@
 import { useAuthStore } from '../../contexts';
 import { supabaseConfigured } from '../../services/supabaseClient';
+import { SignIn } from '@phosphor-icons/react';
 
 export default function AuthControl(): JSX.Element {
   const session = useAuthStore(state => state.session);
@@ -28,8 +29,9 @@ export default function AuthControl(): JSX.Element {
     <button
       type="button"
       onClick={openSignIn}
-      className="text-primary-700 cursor-pointer rounded border border-primary-200 px-2 py-1 text-xs"
+      className="bg-primary-100 text-primary-800 hover:bg-primary-150 hover:border-primary-300 focus-visible:outline-primary-400 inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-sm border border-primary-250 px-3 text-[11px] font-semibold shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
     >
+      <SignIn size={14} weight="bold" aria-hidden="true" />
       Sign in
     </button>
   );

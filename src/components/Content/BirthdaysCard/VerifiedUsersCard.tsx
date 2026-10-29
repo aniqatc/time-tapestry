@@ -24,7 +24,7 @@ export default function VerifiedUsersCard(): JSX.Element {
   );
 
   return (
-    <PrimaryCard heading={`Birthdays on ${shortFormattedDate}`}>
+    <PrimaryCard heading={`Birthdays on ${shortFormattedDate}`} fillHeight>
       {matchingSaved.length > 0 && (
         <>
           <Label className="mb-2">Your Birthdays</Label>

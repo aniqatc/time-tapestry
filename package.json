@@ -3,15 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "",
+  "description": "A calendar for birthdays, notable dates, and astronomy.",
   "keywords": [],
   "author": {
     "name": "Aniqa",
     "email": "hello@aniqa.dev",
     "url": "https://aniqa.dev"
   },
-  "homepage": "",
-  "repository": "",
+  "homepage": "https://tt.aniqa.dev/",
+  "repository": "https://github.com/aniqatc/time-tapestry",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",

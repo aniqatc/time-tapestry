@@ -7,10 +7,12 @@ interface PrimaryCardProps {
   children: React.ReactNode;
   className?: string;
   heading?: string;
+  headingClassName?: string;
+  fillHeight?: boolean;
 }
 
 export default function PrimaryCard({ ...props }: PrimaryCardProps): JSX.Element {
-  const { heading, className, children } = props;
+  const { heading, headingClassName, className, fillHeight = false, children } = props;
   const selectedDate = useDateStore((state: { selectedDate: Date }) => state.selectedDate);
 
   return (
@@ -19,11 +21,11 @@ export default function PrimaryCard({ ...props }: PrimaryCardProps): JSX.Element
       initial={{ opacity: 0.4, x: 25 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3, ease: 'easeIn' }}
-      className="w-full"
+      className={`w-full ${fillHeight ? 'flex h-full flex-col' : ''}`}
     >
-      {heading && <SectionHeading>{heading}</SectionHeading>}
+      {heading && <SectionHeading className={headingClassName}>{heading}</SectionHeading>}
       <div
-        className={`shadow-primary bg-primary-75 border-primary-100 text-primary-500 rounded-sm border p-3 text-sm ${!heading && 'lg:mt-9'} ${className}`}
+        className={`shadow-primary bg-primary-75 border-primary-100 text-primary-500 rounded-sm border p-3 text-sm ${fillHeight ? 'flex-1' : ''} ${!heading && 'lg:mt-9'} ${className}`}
       >
         {children}
       </div>

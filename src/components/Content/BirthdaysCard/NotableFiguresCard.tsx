@@ -28,7 +28,7 @@ export default function NotableFiguresCard(): JSX.Element {
   if (famousBirthdays.length < 0) return <></>;
 
   return (
-    <PrimaryCard>
+    <PrimaryCard fillHeight>
       {isLoading ? (
         <Loading />
       ) : (

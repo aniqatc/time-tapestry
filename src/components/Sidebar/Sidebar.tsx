@@ -3,6 +3,7 @@ import { Cake } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import Calendar from './Calendar';
 import BirthdayForm from './BirthdayForm';
+import SavedBirthdaysList from './SavedBirthdaysList';
 import { useScreenSize } from '../../hooks';
 import { useThemeStore } from '../../contexts';
 
@@ -45,6 +46,7 @@ export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
           >
             <Calendar />
             <BirthdayForm />
+            <SavedBirthdaysList />
           </motion.div>
         )}
         {!isExpanded && (

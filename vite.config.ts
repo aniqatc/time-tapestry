@@ -15,12 +15,17 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: [],
+      includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
-        name: '',
-        short_name: '',
-        description: '',
-        theme_color: '#ffffff',
+        name: 'Time Tapestry',
+        short_name: 'Time Tapestry',
+        description: 'A calendar for birthdays, notable dates, and astronomy.',
+        theme_color: '#f4f7fb',
+        background_color: '#f4f7fb',
+        start_url: '/',
+        scope: '/',
+        display: 'standalone',
+        categories: ['calendar', 'lifestyle'],
         icons: [
           {
             src: 'pwa-192x192.png',

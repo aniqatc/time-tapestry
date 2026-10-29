@@ -52,24 +52,24 @@ export default function SignInDialog(): JSX.Element | null {
         role="dialog"
         aria-modal="true"
         aria-labelledby="sign-in-title"
-        className="bg-primary-25 border-primary-200 relative w-full max-w-sm rounded-md border p-5 shadow-xl"
+        className="bg-primary-25 border-primary-200 relative w-full max-w-sm rounded-md border p-4 shadow-xl"
       >
         <button
           type="button"
           aria-label="Close sign-in dialog"
           onClick={closeSignIn}
-          className="text-primary-500 hover:text-primary-800 absolute top-3 right-3 rounded p-1"
+          className="text-primary-500 hover:text-primary-800 absolute top-2.5 right-2.5 rounded p-1"
         >
           <X size={18} />
         </button>
-        <h2 id="sign-in-title" className="text-primary-900 mb-1 text-lg font-semibold">
+        <h2 id="sign-in-title" className="text-primary-900 mb-1 text-sm font-semibold">
           Sign in to add a birthday
         </h2>
-        <p className="text-primary-500 mb-4 text-sm">
+        <p className="text-primary-500 mb-3 text-xs leading-[1.15rem]">
           We’ll email you a secure sign-in link. Your saved birthdays stay private unless you choose to share them.
         </p>
-        <form onSubmit={event => void handleSubmit(event)} className="flex flex-col gap-3">
-          <label htmlFor="sign-in-email" className="text-primary-700 text-sm font-medium">
+        <form onSubmit={event => void handleSubmit(event)} className="flex flex-col gap-2.5">
+          <label htmlFor="sign-in-email" className="text-primary-700 text-xs font-medium">
             Email address
           </label>
           <input
@@ -81,18 +81,18 @@ export default function SignInDialog(): JSX.Element | null {
             value={email}
             onChange={event => setEmail(event.target.value)}
             placeholder="you@example.com"
-            className="border-primary-200 rounded border bg-white px-3 py-2 outline-none focus:border-primary-400"
+            className="border-primary-200 rounded border bg-white px-3 py-1.5 text-[13px] outline-none focus:border-primary-400"
           />
           <button
             type="submit"
             disabled={isSending}
-            className="bg-primary-100 text-primary-800 rounded px-3 py-2 font-medium disabled:cursor-wait disabled:opacity-50"
+            className="bg-primary-100 text-primary-800 rounded px-3 py-1.5 text-[13px] font-medium disabled:cursor-wait disabled:opacity-50"
           >
             {isSending ? 'Sending…' : 'Email me a sign-in link'}
           </button>
         </form>
         {(notice || error) && (
-          <p role="status" aria-live="polite" className={`mt-3 text-sm ${error ? 'text-red-700' : 'text-primary-600'}`}>
+          <p role="status" aria-live="polite" className={`mt-3 text-xs ${error ? 'text-red-700' : 'text-primary-600'}`}>
             {error || notice}
           </p>
         )}
