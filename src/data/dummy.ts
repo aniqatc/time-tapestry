@@ -1,88 +1,11 @@
-import dayjs from 'dayjs';
-import { UserBirthday, RecurringEvent, MoonData, ZodiacData, PlanetaryPositionData } from '../types';
+import { MoonData, ZodiacData, PlanetaryPositionData } from '../types';
 import {
   Eye,
   Asterisk,
   Atom,
   Planet,
   Scales,
-  Icon,
-  Calendar,
-  CalendarX,
-  Star,
-  StarHalf,
-  UsersThree,
-  ChartLineUp,
-  HourglassHigh,
-  HourglassLow,
 } from '@phosphor-icons/react';
-
-export const VERIFIED_USERS: UserBirthday[] = [
-  {
-    name: 'aniqatc',
-    birthday: dayjs().subtract(20, 'year').toDate(),
-    link: 'https://aniqa.dev',
-    relation: 'Self (Female)',
-  },
-  {
-    name: 'timothy',
-    birthday: dayjs().subtract(11, 'year').toDate(),
-    relation: 'Sister',
-  },
-  {
-    name: 'johndoe',
-    birthday: dayjs().subtract(58, 'year').toDate(),
-    link: 'https://bsky.app',
-    relation: 'Self (Male)',
-  },
-  {
-    name: 'cooldude',
-    birthday: dayjs().subtract(48, 'year').toDate(),
-    link: 'https://twitter.com/cooldude',
-    relation: 'Self (Male)',
-  },
-  {
-    name: 'johndoe',
-    birthday: dayjs().subtract(58, 'year').toDate(),
-    relation: 'Wife',
-  },
-  {
-    name: 'janedoe',
-    birthday: dayjs().subtract(25, 'year').toDate(),
-    relation: 'Husband',
-  },
-];
-
-export const siteEvents: RecurringEvent[] = [
-  {
-    month: 9,
-    day: 10,
-    year: 2024,
-  },
-  {
-    month: 1,
-    day: 27,
-    year: 2023,
-  },
-  {
-    month: 1,
-    day: 18,
-    year: 2000,
-  },
-];
-
-export const userEvents: RecurringEvent[] = [
-  {
-    month: new Date().getMonth(),
-    day: new Date().getDate(),
-    year: new Date().getFullYear(),
-  },
-  {
-    month: 9,
-    day: 10,
-    year: 2024,
-  },
-];
 
 export const MOON_CONTENT: MoonData = {
   name: 'Waxing Gibbous',
@@ -214,52 +137,5 @@ export const PLANET_POSITIONS: PlanetaryPositionData[] = [
     degree: 15,
     color: '#C16718',
     magnitude: 0.51,
-  },
-];
-
-export const ON_THIS_SITE_DATA: {
-  Icon: Icon;
-  stat: string;
-  value: string;
-}[] = [
-  {
-    Icon: Calendar,
-    stat: 'Most Common Birthday',
-    value: '02/27',
-  },
-  {
-    Icon: CalendarX,
-    stat: 'Unclaimed',
-    value: '291 days without entries',
-  },
-  {
-    Icon: Star,
-    stat: 'Top Zodiac',
-    value: 'Virgo with 21 users',
-  },
-  {
-    Icon: StarHalf,
-    stat: 'Least Zodiac',
-    value: 'Aries with 0 users',
-  },
-  {
-    Icon: UsersThree,
-    stat: 'Top Generation',
-    value: 'Millennials',
-  },
-  {
-    Icon: ChartLineUp,
-    stat: 'Average Age',
-    value: '28 years',
-  },
-  {
-    Icon: HourglassHigh,
-    stat: 'Oldest Age',
-    value: '53 years',
-  },
-  {
-    Icon: HourglassLow,
-    stat: 'Youngest Age',
-    value: '20 years',
   },
 ];
