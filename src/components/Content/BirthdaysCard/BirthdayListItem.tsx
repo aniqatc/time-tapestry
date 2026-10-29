@@ -22,19 +22,20 @@ export default function BirthdayListItem({ ...props }: BirthdayListItemProps): J
   const { user, type, displayName, index, children, onRemove } = props;
 
   if (index >= 5) return null;
+  const isFamous = type === 'famous';
   const El = user.link ? 'a' : 'span';
 
   return (
     <li
-      className={`mb-0.5 flex justify-between gap-2 ${type === 'famous' ? 'items-start' : 'items-center'} ${type === 'user' && 'lowercase'}`}
+      className={`${isFamous ? 'mb-2 grid grid-cols-[max-content_minmax(1rem,1fr)_max-content] items-baseline gap-2' : 'mb-0.5 flex items-center justify-between gap-2'} ${type === 'user' && 'lowercase'}`}
     >
       <El
         href={user.link}
         target={user.link ? '_blank' : undefined}
         rel={user.link ? 'noreferrer noopener' : undefined}
-        className={`flex min-w-0 flex-1 justify-between gap-2 ${type === 'famous' ? 'items-start' : 'items-center'} ${user.link ? 'group hover:text-primary-700 transition-all hover:underline' : ''}`}
+        className={`${isFamous ? 'contents' : 'flex min-w-0 flex-1 items-center justify-between gap-2'} ${user.link ? 'group hover:text-primary-700 transition-all hover:underline' : ''}`}
       >
-        <p className={type === 'famous' ? 'min-w-0 flex-1 break-words' : 'shrink-0'}>
+        <p className={isFamous ? 'whitespace-nowrap' : 'shrink-0'}>
           <span className="font-medium transition-all group-hover:font-bold">
             {type === 'famous' ? user.name : displayName || user.name}
           </span>{' '}
