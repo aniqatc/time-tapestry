@@ -1,21 +1,24 @@
 import { useState } from 'react';
 import PlanetaryChart from './ContentComponents/PlanetaryChart';
 import PlanetaryLegend from './ContentComponents/PlanetaryLegend';
-import { PLANET_POSITIONS, ZODIAC_SIGNS } from '../../../data/dummy';
+import { getPlanetPositions, ZODIAC_SIGNS } from '../../../utils/astrology';
+import { useDateStore } from '../../../contexts';
 
 export default function PlanetContent(): JSX.Element {
   const [hoveredPlanet, setHoveredPlanet] = useState<string>('');
+  const selectedDate = useDateStore(state => state.selectedDate);
+  const planets = getPlanetPositions(selectedDate);
 
   return (
     <div className="@container flex flex-wrap items-center gap-1">
       <PlanetaryChart
-        planets={PLANET_POSITIONS}
+        planets={planets}
         zodiacSigns={ZODIAC_SIGNS}
         hoveredPlanet={hoveredPlanet}
         setHoveredPlanet={setHoveredPlanet}
       />
       <PlanetaryLegend
-        planets={PLANET_POSITIONS}
+        planets={planets}
         setHoveredPlanet={setHoveredPlanet}
         hoveredPlanet={hoveredPlanet}
       />

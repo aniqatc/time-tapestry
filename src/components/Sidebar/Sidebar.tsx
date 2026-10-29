@@ -30,7 +30,7 @@ export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
       <motion.aside
         initial={false}
         animate={{ width: isExpanded ? 315 : 50 }}
-        className={`shadow-primary border-primary-200 fixed z-100 mr-auto flex h-fit max-h-[calc(100dvh-5rem)] flex-col items-center gap-2 overflow-y-auto overscroll-contain rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 max-sm:cursor-pointer ${className}`}
+        className={`shadow-primary border-primary-200 fixed top-14 bottom-4 z-100 mr-auto flex h-auto max-h-[calc(100dvh-5rem)] flex-col items-center gap-2 overflow-y-auto overscroll-contain rounded-tr-sm rounded-br-sm border bg-white px-3 py-3 max-sm:cursor-pointer ${className}`}
         onMouseEnter={() => width < 640 && setIsExpanded(true)}
         onMouseLeave={() => width < 640 && setIsExpanded(false)}
         onClick={() => width < 640 && setIsExpanded(true)}
@@ -48,8 +48,14 @@ export default function Sidebar({ className = '' }: SidebarProps): JSX.Element {
           </motion.div>
         )}
         {!isExpanded && (
-          <button className="text-primary-600 animate-subtle-shake flex items-center justify-center">
+          <button
+            type="button"
+            aria-label="Open birthday sidebar"
+            title="Hover or click to open"
+            className="text-primary-600 animate-subtle-shake flex flex-col items-center justify-center gap-1"
+          >
             <Cake size={24} weight="duotone" />
+            <span className="text-[9px] leading-none font-medium">Open</span>
           </button>
         )}
       </motion.aside>
