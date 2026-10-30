@@ -18,9 +18,6 @@ export default function OnThisSiteCard(): JSX.Element {
 
   return (
     <>
-      <p className="text-primary-400 -mb-7 pt-3 pr-2 text-end text-xs">
-        Community entries are shared by opt-in
-      </p>
       <PrimaryCard heading="Community Birthday Stats" className="@container">
         <ul className="grid grid-cols-1 gap-1 @[410px]:grid-cols-2">
           {data.map(item => {

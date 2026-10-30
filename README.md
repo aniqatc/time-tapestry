@@ -19,6 +19,7 @@ A calendar for birthdays, notable dates and the sky. Pick a day to explore birth
 - React, TypeScript and Vite
 - Tailwind CSS, Mantine and Motion
 - Supabase Auth and Postgres for shared birthdays
+- Resend for magic link emails
 - Astronomy Engine for local astronomical calculations
 - Wikimedia On This Day feed for historical events and birthdays
 - Vite PWA for install support

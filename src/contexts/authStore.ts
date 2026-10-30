@@ -48,7 +48,10 @@ export const useAuthStore = create<AuthState>(set => ({
     if (!supabase) return false;
     set({ error: null });
     try {
-      const { error } = await supabase.auth.signInWithOtp({ email: email.trim() });
+      const { error } = await supabase.auth.signInWithOtp({
+        email: email.trim(),
+        options: { emailRedirectTo: window.location.origin },
+      });
       if (error) {
         set({ error: error.message });
         return false;
